@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681155560147",
+    "project_id": "healthai-2deb8",
+    "storage_bucket": "healthai-2deb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681155560147:android:3ea22ace94a10050424a26",
+        "android_client_info": {
+          "package_name": "com.example.healthai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkRFY8W-8-8rYPSo8fQkTB4T2SZy-_MA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
