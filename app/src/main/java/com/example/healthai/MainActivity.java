@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
     private FirebaseAuth mAuth;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
-
+        TextView signUpTextView = findViewById(R.id.signUpTextView);
+        signUpTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Launch the SignUpActivity
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,9 +51,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+        // Add any other initialization or login-related code here
+
+
+
+
     private void attemptLogin() {
-        String email = usernameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+        String email = usernameEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            // Show an error message when either email or password is empty
+            Toast.makeText(MainActivity.this, "Please fill in both email and password fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -51,20 +73,20 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Login successful
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(MainActivity.this, "login in success", Toast.LENGTH_SHORT).show();
                             if (user != null) {
-                                // Redirect to the main screen (MainActivity)
+
                                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
-                            } else {
-                                // Handle the case where the user is null
                             }
                         } else {
                             // Login failed
-                            // Display an error message to the user
-                            Toast.makeText(MainActivity.this, "Login failed. Check your credentials.", Toast.LENGTH_SHORT).show();
+                            // Provide a more specific error message
+                            Toast.makeText(MainActivity.this, "Login failed. Please check your credentials.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
+
 }
