@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    >
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/doctor"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/logoImageView"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/emailEditText"
+            style="@style/RegisterEditTextStyle"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            style="@style/RegisterEditTextStyle"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            style="@style/RegisterEditTextStyle"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/RegisterButton"
+            style="@style/RegisterButtonStyle"
+            android:text="Register" />
+
+        <!--<TextView
+            android:id="@+id/forgotPasswordTextView"
+            style="@style/ForgotPasswordTextStyle"
+            android:text="Forgot Password?" /> not needed-->
+
+        <TextView
+            android:id="@+id/signInTextView"
+            style="@style/SignInTextStyle"
+            android:text="Already have an account? Sign In" />
+
+    </LinearLayout>
+
+</RelativeLayout>

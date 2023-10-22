@@ -19,9 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".RegisterActivity"
             android:exported="true"> <!-- This activity is set to true, you can adjust this based on your app's requirements -->
         </activity>
+
 
 
 
