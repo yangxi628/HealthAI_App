@@ -13,3 +13,4 @@ public class AiChatActivity extends AppCompatActivity {
         setContentView(R.layout.aichat);
     }
 }
+// luke

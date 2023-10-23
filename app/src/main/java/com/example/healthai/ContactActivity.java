@@ -12,3 +12,4 @@ public class ContactActivity extends AppCompatActivity {
         setContentView(R.layout.contact);
     }
 }
+// luke

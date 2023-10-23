@@ -12,3 +12,4 @@ public class RatingActivity extends AppCompatActivity {
         setContentView(R.layout.rating);
     }
 }
+// luke
