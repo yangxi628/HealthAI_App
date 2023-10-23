@@ -20,9 +20,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"
-            android:exported="true"> <!-- This activity is set to true, you can adjust this based on your app's requirements -->
-        </activity>
+        <activity android:name=".RegisterActivity"/>
+
+        <activity android:name=".AiChatActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".SubscriptionActivity" />
+        <activity android:name=".AppointmentActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".RatingActivity" />
+        <activity android:name=".HomeActivity" />
 
 
 

@@ -45,9 +45,21 @@ public class MainActivity extends AppCompatActivity {
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
+            // code below should change to this   public void onClick(View v) {
+            //                attemptLogin();
+            //            }
             public void onClick(View v) {
-                attemptLogin();
+                try {
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+
+                    startActivity(intent);
+                    // finish();  // Optionally finish the MainActivity
+                } catch (Exception e) {
+                    // Handle any exceptions that may occur during navigation
+                    e.printStackTrace();
+                }
             }
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         });
     }
 
