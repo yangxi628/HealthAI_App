@@ -1,15 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CONTACT"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="150dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="HealthAI"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/gpImageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/doctor" />
+
+        <TextView
+            android:id="@+id/gpName"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="GP NAME"
+            android:textSize="24sp"
+            android:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/gpContactButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTACT GP" />
+
+        <ImageView
+            android:id="@+id/insuranceImageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/doctor" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="INSURANCE NAME"
+            android:textSize="24sp"
+            android:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/insuranceContactButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTACT INSURANCE" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <!-- bottom row -->
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home" />
+
+        <Button
+            android:id="@+id/aiChatButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AI Chat" />
+
+        <Button
+            android:id="@+id/contactButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Contact" />
+
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" />
+    </LinearLayout>
+</RelativeLayout>
+
     <!-- luke -->
