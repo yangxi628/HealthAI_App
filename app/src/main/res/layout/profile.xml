@@ -37,7 +37,7 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:padding="16dp"
-            android:text="NAME HERE"
+            android:text="userid here"
             android:textSize="24sp"
             android:visibility="visible" />
 
