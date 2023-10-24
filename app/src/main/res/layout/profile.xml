@@ -91,6 +91,11 @@
             android:layout_weight="1"
             android:text="Profile" />
     </LinearLayout>
+        <Button
+        android:id="@+id/BackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
 </RelativeLayout>
 
     <!-- luke -->
