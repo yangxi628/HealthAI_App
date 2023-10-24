@@ -7,12 +7,25 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfileActivity extends AppCompatActivity {
-    @Override
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import android.widget.TextView;
+
+public class ProfileActivity extends AppCompatActivity {
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.profile);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = user.getUid();
+
+        TextView userTextView = findViewById(R.id.name);
+        userTextView.setText(userid);
 
         Button homeButton = findViewById(R.id.homeButton);
         Button aiChatButton = findViewById(R.id.aiChatButton);
@@ -34,6 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
                 } else if (v.getId() == R.id.profileButton) {
                     switchToActivity(ProfileActivity.class);
                 } else if (v.getId() == R.id.signoutButton) {
+
+                    
                     switchToActivity(MainActivity.class);
                 }
             }
