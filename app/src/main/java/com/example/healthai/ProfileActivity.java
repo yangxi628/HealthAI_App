@@ -21,11 +21,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.profile);
 
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //String userid = user.getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = user.getUid();
 
-        //TextView userTextView = findViewById(R.id.name);
-        //userTextView.setText(userid);
+        TextView userTextView = findViewById(R.id.name);
+        userTextView.setText(userid);
 
         Button homeButton = findViewById(R.id.homeButton);
         Button aiChatButton = findViewById(R.id.aiChatButton);

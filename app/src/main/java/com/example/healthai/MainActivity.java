@@ -49,15 +49,7 @@ public class MainActivity extends AppCompatActivity {
             //                attemptLogin();
             //            }
             public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-
-                    startActivity(intent);
-                    // finish();  // Optionally finish the MainActivity
-                } catch (Exception e) {
-                    // Handle any exceptions that may occur during navigation
-                    e.printStackTrace();
-                }
+                attemptLogin();
             }
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         });
@@ -88,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "login in success", Toast.LENGTH_SHORT).show();
                             if (user != null) {
 
-                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
