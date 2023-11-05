@@ -10,8 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -22,10 +26,32 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userid = user.getUid();
+        String userid = user.getUid(); // Get the UID of the currently signed-in user
 
-        TextView userTextView = findViewById(R.id.name);
-        userTextView.setText(userid);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference userDocRef = db.collection("users").document(userid); // Reference to the user's document
+
+        userDocRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                String firstName = documentSnapshot.getString("firstname");
+                String lastName = documentSnapshot.getString("lastname");
+
+                if (firstName != null) {
+                    TextView userTextView = findViewById(R.id.name);
+                    userTextView.setText(firstName+" "+lastName);
+
+                }
+            } else {
+                Toast.makeText(ProfileActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(ProfileActivity.this, "access failed", Toast.LENGTH_SHORT).show();
+        });
+
+
+
+
+
 
         Button homeButton = findViewById(R.id.homeButton);
         Button aiChatButton = findViewById(R.id.aiChatButton);
