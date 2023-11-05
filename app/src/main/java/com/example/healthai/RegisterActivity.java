@@ -74,8 +74,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 // Registration successful
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user != null) {
-                                    // Redirect to the main screen (MainActivity)
-                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                    // Redirect to the main screen (HomeActivity)
+                                    Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
