@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
-    >
+    android:background="@color/blue">
 
     <ImageView
         android:id="@+id/logoImageView"
@@ -23,6 +22,18 @@
         android:orientation="vertical"
         android:layout_below="@+id/logoImageView"
         android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/firstNameEditText"
+            style="@style/RegisterEditTextStyle"
+            android:hint="First Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/lastNameEditText"
+            style="@style/RegisterEditTextStyle"
+            android:hint="Last Name"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/emailEditText"
@@ -47,10 +58,6 @@
             style="@style/RegisterButtonStyle"
             android:text="Register" />
 
-
-
-
-
     </LinearLayout>
 
     <Button
@@ -60,4 +67,3 @@
         android:text="Back" />
 
 </RelativeLayout>
-<!-- luke -->

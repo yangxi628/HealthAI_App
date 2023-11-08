@@ -1,5 +1,6 @@
 package com.example.healthai;
 
+import android.util.Log;
 import android.widget.Button;
 import android.os.Bundle;
 import android.content.Intent;
@@ -12,7 +13,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText usernameEditText;
@@ -21,10 +24,15 @@ public class RegisterActivity extends AppCompatActivity {
     private Button RegisterButton;
     private Button BackButton;  // Initialize BackButton
 
+    private  EditText firstNameEditText;
+
+    private  EditText lastNameEditText;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -33,6 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
         RegisterButton = findViewById(R.id.RegisterButton);
         BackButton = findViewById(R.id.BackButton);
+        firstNameEditText = findViewById(R.id.firstNameEditText);
+        lastNameEditText = findViewById(R.id.lastNameEditText);
+
 
         // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
@@ -56,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
         String email = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
+        String firstname = firstNameEditText.getText().toString();
+        String lastname = lastNameEditText.getText().toString();
 
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             // Show an error message when either email or password is empty
@@ -71,22 +84,29 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Registration successful
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                if (user != null) {
-                                    // Redirect to the main screen (HomeActivity)
-                                    Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                Users newUser = new Users(firstname,lastname,email,password);
+                                db.collection("users").add(newUser)
+                                        .addOnSuccessListener(documentReference -> {
+                                            // DocumentSnapshot added with ID
+                                            Log.d("TAG", "Log in successful" + documentReference.getId());
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Log.w("TAG", "Error adding document", e);
+                                        });
+                                Toast.makeText(RegisterActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+
                             } else {
                                 // Registration failed
-                                // Display an error message to the user
                                 Toast.makeText(RegisterActivity.this, "Registration failed. Check your credentials.", Toast.LENGTH_SHORT).show();
+                                Log.e("RegistrationError", "Registration failed: " + task.getException());
                             }
                         }
-
                     });
+
         }
     }
 }
