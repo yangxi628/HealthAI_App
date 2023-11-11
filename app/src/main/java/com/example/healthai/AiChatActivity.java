@@ -45,6 +45,8 @@ public class AiChatActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
     private void switchToActivity(Class<?> cls) {
