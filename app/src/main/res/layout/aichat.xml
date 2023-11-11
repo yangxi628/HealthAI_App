@@ -17,8 +17,9 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -38,7 +39,7 @@
             android:hint="Enter Message" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEND" />
