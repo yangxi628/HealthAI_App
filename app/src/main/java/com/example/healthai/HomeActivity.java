@@ -44,6 +44,10 @@ public class HomeActivity extends AppCompatActivity {
             if (documentSnapshot.exists()) {
                 String role = documentSnapshot.getString("role");
 
+                if (role != null){
+                    role = role.toLowerCase();
+                }
+
                 if (role != "patient") {
                     appointmentButton.setEnabled(false);
                     historyButton.setEnabled(false);

@@ -94,9 +94,9 @@ public class RegisterActivity extends AppCompatActivity {
         String lastname = lastNameEditText.getText().toString();
         String phone = phoneNumEditText.getText().toString();
 
-        String role = spinnerRoles.getSelectedItem().toString();
+        String role = spinnerRoles.getSelectedItem().toString().toLowerCase();
 
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() || role.equals("Select Role")) {
+        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() || role.equals("select role")) {
             // Show an error message when either email or password is empty
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;

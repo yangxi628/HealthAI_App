@@ -74,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
                     switchToActivity(ProfileActivity.class);
                 } else if (v.getId() == R.id.signoutButton) {
 
-                    
+                    FirebaseAuth.getInstance().signOut();
                     switchToActivity(MainActivity.class);
                 }
             }

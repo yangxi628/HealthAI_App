@@ -39,10 +39,14 @@ public class ContactActivity extends AppCompatActivity {
             if (documentSnapshot.exists()) {
                 String role = documentSnapshot.getString("role");
 
+                if (role != null){
+                    role = role.toLowerCase();
+                }
+
                 if (role != "patient") {
                     gpContactButton.setEnabled(false);
-
                 }
+                
             } else {
                 Toast.makeText(ContactActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
             }
