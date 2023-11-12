@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HealthAI</string>
+
+    <string-array name="role_select">
+        <item>Patient</item>
+        <item>Doctor</item>
+    </string-array>
 </resources>

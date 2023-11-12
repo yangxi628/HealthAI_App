@@ -17,6 +17,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+
+
+
 public class RegisterActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -24,11 +32,13 @@ public class RegisterActivity extends AppCompatActivity {
     private Button RegisterButton;
     private Button BackButton;  // Initialize BackButton
 
-    private  EditText firstNameEditText;
+    private EditText firstNameEditText;
 
-    private  EditText lastNameEditText;
+    private EditText lastNameEditText;
+    private EditText phoneNumEditText;
 
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +50,20 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
         RegisterButton = findViewById(R.id.RegisterButton);
-        BackButton = findViewById(R.id.BackButton);
+
+        BackButton = findViewById(R.id.BackButton);//remove
+
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
+        phoneNumEditText = findViewById(R.id.editTextPhone);
+
+        Spinner spinnerRoles = findViewById(R.id.spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.role_select, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        spinnerRoles.setAdapter(adapter);
 
 
         // Initialize Firebase Authentication
@@ -69,8 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPassword = confirmPasswordEditText.getText().toString();
         String firstname = firstNameEditText.getText().toString();
         String lastname = lastNameEditText.getText().toString();
+        String phone = phoneNumEditText.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        //role
+
+        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() ) {
             // Show an error message when either email or password is empty
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
@@ -85,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                Users newUser = new Users(firstname,lastname,email,password);
+                                Users newUser = new Users(firstname,lastname,email,password,phone,role);
                                 db.collection("users").add(newUser)
                                         .addOnSuccessListener(documentReference -> {
                                             // DocumentSnapshot added with ID

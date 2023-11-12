@@ -42,6 +42,14 @@
             android:inputType="textEmailAddress" />
 
         <EditText
+            android:id="@+id/editTextPhone"
+            style="@style/RegisterEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+
+        <EditText
             android:id="@+id/passwordEditText"
             style="@style/RegisterEditTextStyle"
             android:hint="Password"
@@ -52,6 +60,11 @@
             style="@style/RegisterEditTextStyle"
             android:hint="Confirm Password"
             android:inputType="textPassword" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/RegisterButton"

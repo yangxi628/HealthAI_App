@@ -32,8 +32,8 @@ public class AiChatActivity extends AppCompatActivity {
     private final String USER = "user";
     private final String BOT = "bot";
 
-    private ArrayList<Message> messageArrayList;
-    private MessagesViewAdapter adapter;
+    private ArrayList<ChatMessage> messageArrayList;
+    private MessagesViewAdapter chatAdapter;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -76,6 +76,13 @@ public class AiChatActivity extends AppCompatActivity {
 
         messageArrayList = new ArrayList<>();
 
+        chatAdapter = new MessagesViewAdapter(messageArrayList, this);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AiChatActivity.this, RecyclerView.VERTICAL, false);
+
+        chat.setLayoutManager(linearLayoutManager);
+        chat.setAdapter(chatAdapter);
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,55 +97,20 @@ public class AiChatActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new MessagesViewAdapter(messageArrayList, this);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AiChatActivity.this, RecyclerView.VERTICAL, false);
-
-        chat.setLayoutManager(linearLayoutManager);
-        chat.setAdapter(adapter);
     }
 
     private void sendMessage(String userMessage){
-        messageArrayList.add(new Message(userMessage, USER));
-        adapter.notifyDataSetChanged();
+        messageArrayList.add(new ChatMessage(userMessage, USER));
+        chatAdapter.notifyDataSetChanged();
 
 
 
-        String url = "" + userMessage;
 
-        RequestQueue queue = Volley.newRequestQueue(AiChatActivity.this);
+        //String url = "https://api.openai.com/v1/chat/completions/" + userMessage;
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>(){
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    // in on response method we are extracting data
-                    // from json response and adding this response to our array list.
-                    String botResponse = response.getString("cnt");
-                    messageArrayList.add(new Message(botResponse, BOT));
 
-                    // notifying our adapter as data changed.
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
-                    e.printStackTrace();
 
-                    // handling error response from bot.
-                    messageArrayList.add(new Message("No response", BOT));
-                    adapter.notifyDataSetChanged();
-                }
-            }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // error handling.
-                    messageArrayList.add(new Message("Sorry no response found", BOT));
-                    Toast.makeText(AiChatActivity.this, "No response from the bot..", Toast.LENGTH_SHORT).show();
-                }
-            });
 
-            // at last adding json object
-            // request to our queue.
-            queue.add(jsonObjectRequest);
     }
 
 

@@ -8,16 +8,20 @@ public class Users {
     private String role;
     private String password;
 
+    private String phone;
+    private String role;
+
     public Users() {
         // Default constructor required for Firebase
     }
 
-    public Users(String firstName, String lastName, String email, String password) {
+    public Users(String firstName, String lastName, String email, String password, String phone, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.role = "patient";
+        this.role = role;
         this.password = password;
+        this.phone = phone;
     }
 
     // Getters
@@ -35,6 +39,10 @@ public class Users {
 
     public String getRole() {
         return role;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getPassword() {
@@ -56,6 +64,10 @@ public class Users {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setPassword(String password) {
