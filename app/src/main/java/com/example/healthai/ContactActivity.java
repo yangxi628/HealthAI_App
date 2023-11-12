@@ -5,8 +5,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ContactActivity extends AppCompatActivity {
     @Override
@@ -22,6 +28,27 @@ public class ContactActivity extends AppCompatActivity {
 
         Button gpContactButton = findViewById(R.id.gpContactButton);
         Button insuranceContactButton = findViewById(R.id.insuranceContactButton);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = user.getUid(); // Get the UID of the currently signed-in user
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference userDocRef = db.collection("users").document(userid); // Reference to the user's document
+
+        userDocRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                String role = documentSnapshot.getString("role");
+
+                if (role != "patient") {
+                    gpContactButton.setEnabled(false);
+
+                }
+            } else {
+                Toast.makeText(ContactActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(ContactActivity.this, "access failed", Toast.LENGTH_SHORT).show();
+        });
 
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
