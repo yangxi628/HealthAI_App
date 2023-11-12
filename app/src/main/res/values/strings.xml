@@ -2,6 +2,7 @@
     <string name="app_name">HealthAI</string>
 
     <string-array name="role_select">
+        <item>Select Role</item>
         <item>Patient</item>
         <item>Doctor</item>
     </string-array>

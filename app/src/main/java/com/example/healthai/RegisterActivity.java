@@ -37,6 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText lastNameEditText;
     private EditText phoneNumEditText;
 
+    private Spinner spinnerRoles;
+
     private FirebaseAuth mAuth;
 
 
@@ -57,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         lastNameEditText = findViewById(R.id.lastNameEditText);
         phoneNumEditText = findViewById(R.id.editTextPhone);
 
-        Spinner spinnerRoles = findViewById(R.id.spinner);
+        spinnerRoles = findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.role_select, android.R.layout.simple_spinner_item);
 
@@ -92,9 +94,9 @@ public class RegisterActivity extends AppCompatActivity {
         String lastname = lastNameEditText.getText().toString();
         String phone = phoneNumEditText.getText().toString();
 
-        //role
+        String role = spinnerRoles.getSelectedItem().toString();
 
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() ) {
+        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() || role.equals("Select Role")) {
             // Show an error message when either email or password is empty
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;

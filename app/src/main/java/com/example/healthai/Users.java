@@ -9,7 +9,6 @@ public class Users {
     private String password;
 
     private String phone;
-    private String role;
 
     public Users() {
         // Default constructor required for Firebase
