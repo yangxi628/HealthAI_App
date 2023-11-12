@@ -12,16 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONObject;
-import org.json.JSONException;
-
 import java.util.ArrayList;
 
 public class AiChatActivity extends AppCompatActivity {
@@ -102,15 +92,7 @@ public class AiChatActivity extends AppCompatActivity {
     private void sendMessage(String userMessage){
         messageArrayList.add(new ChatMessage(userMessage, USER));
         chatAdapter.notifyDataSetChanged();
-
-
-
-
-        //String url = "https://api.openai.com/v1/chat/completions/" + userMessage;
-
-
-
-
+        // send to ai, get response
     }
 
 
