@@ -5,78 +5,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue">
+    android:background="@color/white"
+    android:layout_margin="20dp">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical">
 
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/doctor"
-        android:scaleType="fitCenter" />
 
+        <ImageView
+            android:id="@+id/BackButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/back" />
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="120dp"
+            android:layout_height="53dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/logoimg" />
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_shadow_background"
         android:orientation="vertical"
-        android:layout_below="@+id/logoImageView"
-        android:layout_margin="16dp">
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sign Up"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subtext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="New user? you can sign up below"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+
 
         <EditText
             android:id="@+id/firstNameEditText"
-            style="@style/RegisterEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
             android:hint="First Name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
 
         <EditText
             android:id="@+id/lastNameEditText"
-            style="@style/RegisterEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
             android:hint="Last Name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
 
         <EditText
             android:id="@+id/emailEditText"
-            style="@style/RegisterEditTextStyle"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/editTextPhone"
-            style="@style/RegisterEditTextStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:inputType="phone" />
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
 
         <EditText
             android:id="@+id/passwordEditText"
-            style="@style/RegisterEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
-            style="@style/RegisterEditTextStyle"
-            android:hint="Confirm Password"
-            android:inputType="textPassword" />
-
-        <Spinner
-            android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
+
+        <EditText
+            android:id="@+id/editTextDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/editTextDoctor"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Doctor"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
+
+        <EditText
+            android:id="@+id/editTextProfileImg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/editTextProfileImg"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Profile Image"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
 
         <Button
             android:id="@+id/RegisterButton"
-            style="@style/RegisterButtonStyle"
-            android:text="Register" />
-
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#3b82f6"
+            android:textColor="@android:color/white"
+            />
     </LinearLayout>
+</ScrollView>
 
-    <Button
-        android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back" />
 
 </RelativeLayout>

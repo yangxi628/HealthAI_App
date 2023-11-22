@@ -1,7 +1,6 @@
-package com.example.healthai;
+package com.example.healthai.Models;
 
 public class Users {
-
     private String firstname;
     private String lastname;
     private String email;
@@ -9,7 +8,6 @@ public class Users {
     private String password;
 
     private String phone;
-
     public Users() {
         // Default constructor required for Firebase
     }

@@ -1,19 +1,19 @@
 package com.example.healthai;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.healthai.Models.UserState;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -24,41 +24,31 @@ public class HomeActivity extends AppCompatActivity {
         Button homeButton = findViewById(R.id.homeButton);
         Button aiChatButton = findViewById(R.id.aiChatButton);
         Button contactButton = findViewById(R.id.contactButton);
-        Button profileButton = findViewById(R.id.profileButton);
+        ImageView profileButton = findViewById(R.id.profileButton);
 
         Button subscriptionButton = findViewById(R.id.subscriptionButton);
-
         Button appointmentButton = findViewById(R.id.appointmentButton); // not shown if doctor
         Button historyButton = findViewById(R.id.historyButton); // not shown if doctor
 
         Button ratingButton = findViewById(R.id.ratingButton);
 
+        UserState userState = UserState.getInstance();
+        String CurrentUserNameText = userState.getFirstName() + " " + userState.getLastName();
+        String currentUserEmail = userState.getEmail();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userid = user.getUid(); // Get the UID of the currently signed-in user
+        // Find the TextViews by their IDs
+        TextView usernameTextView = findViewById(R.id.CurrentUserNameText);
+        TextView emailTextView = findViewById(R.id.currentUserEmail);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference userDocRef = db.collection("users").document(userid); // Reference to the user's document
+        // Set the text for the TextViews
+        usernameTextView.setText(CurrentUserNameText);
+        emailTextView.setText(currentUserEmail);
 
-        userDocRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String role = documentSnapshot.getString("role");
-
-                if (role != null){
-                    role = role.toLowerCase();
-                }
-
-                if (role != "patient") {
-                    appointmentButton.setEnabled(false);
-                    historyButton.setEnabled(false);
-
-                }
-            } else {
-                Toast.makeText(HomeActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(HomeActivity.this, "access failed", Toast.LENGTH_SHORT).show();
-        });
+        String role =  userState.getRole(); // Get the UID of the currently signed-in user
+        if (role.toLowerCase() != "patient") {
+            appointmentButton.setEnabled(false);
+            historyButton.setEnabled(false);
+        }
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override

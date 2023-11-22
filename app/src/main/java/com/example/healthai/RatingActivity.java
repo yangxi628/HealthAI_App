@@ -17,9 +17,6 @@ public class RatingActivity extends AppCompatActivity {
         Button aiChatButton = findViewById(R.id.aiChatButton);
         Button contactButton = findViewById(R.id.contactButton);
         Button profileButton = findViewById(R.id.profileButton);
-
-
-
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
