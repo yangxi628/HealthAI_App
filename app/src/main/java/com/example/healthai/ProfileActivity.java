@@ -25,28 +25,42 @@ public class ProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.profile);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userid = user.getUid(); // Get the UID of the currently signed-in user
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference userDocRef = db.collection("users").document(userid); // Reference to the user's document
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
 
-        userDocRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String firstName = documentSnapshot.getString("firstname");
-                String lastName = documentSnapshot.getString("lastname");
+        if (user != null) {
+            String userId = user.getUid();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            DocumentReference userDocRef = db.collection("users").document(userId);
 
-                if (firstName != null) {
-                    TextView userTextView = findViewById(R.id.name);
-                    userTextView.setText(firstName+" "+lastName);
+            userDocRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    String firstName = documentSnapshot.getString("firstname");
+                    String lastName = documentSnapshot.getString("lastname");
 
+                    // Check for null values
+                    if (firstName != null && lastName != null) {
+                        TextView userTextView = findViewById(R.id.name);
+                        userTextView.setText(firstName + " " + lastName);
+                    } else {
+                        // Handle the case where first name or last name is null
+                        Toast.makeText(ProfileActivity.this, "User data incomplete", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Handle the case where the document doesn't exist
+                    Toast.makeText(ProfileActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(ProfileActivity.this, "Profile doesn't exist", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(ProfileActivity.this, "access failed", Toast.LENGTH_SHORT).show();
-        });
+            }).addOnFailureListener(e -> {
+                // Handle the case where the document retrieval fails
+                Toast.makeText(ProfileActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+            });
+        } else {
+            // Handle the case where the user is null
+            Toast.makeText(ProfileActivity.this, "User not signed in", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
 

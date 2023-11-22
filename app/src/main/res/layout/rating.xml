@@ -23,7 +23,7 @@
         android:layout_marginTop="16dp">
 
         <TextView
-            android:id="@+id/gpName"
+            android:id="@+id/buttonSubscribe"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:gravity="center"

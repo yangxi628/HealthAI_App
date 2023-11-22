@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -15,6 +14,16 @@
         android:gravity="center"
         android:padding="16dp" />
 
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,22 +31,17 @@
         android:layout_below="@+id/title"
         android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/gpName"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Subscription"
-            android:textSize="24sp"
-            android:visibility="visible" />
-
+        <Button
+            android:id="@+id/paymentButton"
+            android:layout_width="165dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:text="Payment Button" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,9 +79,4 @@
             android:layout_weight="1"
             android:text="Profile" />
     </LinearLayout>
-        <Button
-        android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back" />
 </RelativeLayout>

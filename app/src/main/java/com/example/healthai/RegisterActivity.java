@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -121,6 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             Log.w("TAG", "Error adding document", e);
                                         });
                                 Toast.makeText(RegisterActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 finish();
