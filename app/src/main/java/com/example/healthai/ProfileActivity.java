@@ -91,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     switchToActivity(MainActivity.class);
                 }
+
             }
         };
 
