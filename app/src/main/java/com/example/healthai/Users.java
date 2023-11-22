@@ -2,8 +2,8 @@ package com.example.healthai;
 
 public class Users {
 
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String email;
     private String role;
     private String password;
@@ -14,9 +14,9 @@ public class Users {
         // Default constructor required for Firebase
     }
 
-    public Users(String firstName, String lastName, String email, String password, String phone, String role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Users(String firstname, String lastname, String email, String password, String phone, String role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.role = role;
         this.password = password;
@@ -25,11 +25,11 @@ public class Users {
 
     // Getters
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public String getEmail() {
@@ -49,12 +49,12 @@ public class Users {
     }
 
     // Setters
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setEmail(String email) {
