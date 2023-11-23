@@ -36,8 +36,8 @@ public class ProfileActivity extends AppCompatActivity {
 
             userDocRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    String firstName = documentSnapshot.getString("firstname");
-                    String lastName = documentSnapshot.getString("lastname");
+                    String firstName = documentSnapshot.getString("firstName");
+                    String lastName = documentSnapshot.getString("lastName");
 
                     // Check for null values
                     if (firstName != null && lastName != null) {

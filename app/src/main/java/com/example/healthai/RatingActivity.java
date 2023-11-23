@@ -112,8 +112,8 @@ public class RatingActivity extends AppCompatActivity {
             DocumentReference userDocRef = db.collection("users").document(userId);
 
             userDocRef.get().addOnSuccessListener(documentSnapshot -> {
-                String firstName = documentSnapshot.getString("firstname");
-                String lastName = documentSnapshot.getString("lastname");
+                String firstName = documentSnapshot.getString("firstName");
+                String lastName = documentSnapshot.getString("lastName");
 
                 // Create a map with the data to be stored
                 Map<String, Object> feedbackData = new HashMap<>();

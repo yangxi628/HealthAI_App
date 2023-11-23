@@ -91,13 +91,13 @@ public class RegisterActivity extends AppCompatActivity {
         String email = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
-        String firstname = firstNameEditText.getText().toString();
-        String lastname = lastNameEditText.getText().toString();
+        String firstName = firstNameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
         String phone = phoneNumEditText.getText().toString();
 
         String role = spinnerRoles.getSelectedItem().toString().toLowerCase();
 
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty() || role.equals("select role")) {
+        if (email.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || role.equals("select role")) {
             // Show an error message when either email or password is empty
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
@@ -111,22 +111,24 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                // Get the UID of the newly created user
+                                String uid = mAuth.getCurrentUser().getUid();
+
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                Users newUser = new Users(firstname,lastname,email,password,phone,role);
-                                db.collection("users").add(newUser)
-                                        .addOnSuccessListener(documentReference -> {
-                                            // DocumentSnapshot added with ID
-                                            Log.d("TAG", "Log in successful" + documentReference.getId());
+                                Users newUser = new Users(firstName, lastName, email, password, phone, role);
+
+                                // Set the document ID in Firestore to be the same as the UID
+                                db.collection("users").document(uid).set(newUser)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Toast.makeText(RegisterActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                            startActivity(intent);
+                                            finish();
                                         })
                                         .addOnFailureListener(e -> {
-                                            Log.w("TAG", "Error adding document", e);
+                                            Toast.makeText(RegisterActivity.this, "Failed to add user to Firestore.", Toast.LENGTH_SHORT).show();
+                                            Log.e("FirestoreError", "Error adding document", e);
                                         });
-                                Toast.makeText(RegisterActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                                finish();
-
                             } else {
                                 // Registration failed
                                 Toast.makeText(RegisterActivity.this, "Registration failed. Check your credentials.", Toast.LENGTH_SHORT).show();
@@ -134,8 +136,8 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
-
         }
     }
+
 }
 // luke
