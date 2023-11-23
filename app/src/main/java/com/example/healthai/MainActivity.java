@@ -35,7 +35,6 @@
             passwordEditText = findViewById(R.id.passwordEditText);
             loginButton = findViewById(R.id.loginButton);
 
-            // Initialize Firebase Authentication
             mAuth = FirebaseAuth.getInstance();
             TextView signUpTextView = findViewById(R.id.signUpTextView);
             signUpTextView.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +59,6 @@
             String password = passwordEditText.getText().toString().trim();
 
             if (email.isEmpty() || password.isEmpty()) {
-                // Show an error message when either email or password is empty
                 Toast.makeText(MainActivity.this, "Please fill in both email and password fields.", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -74,13 +72,10 @@
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(MainActivity.this, "Login success", Toast.LENGTH_SHORT).show();
                                 if (user != null) {
-                                    // Fetch additional user details from Firestore based on UID
-
                                     getUserDetailsFromFirestore(user.getUid());
                                 }
                             } else {
-                                // Login failed
-                                // Provide a more specific error message
+
                                 Toast.makeText(MainActivity.this, "Login failed. Please check your credentials.", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -98,16 +93,13 @@
                         if (document.exists()) {
                             UserState userState = UserState.getInstance();
                             userState.setUserStateFromDocument(document, uid);
-                            // Now you can navigate to the HomeActivity or perform other actions
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            // Handle the case where the document does not exist
                             Toast.makeText(MainActivity.this, "User details not found.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        // Handle exceptions
                         Toast.makeText(MainActivity.this, "Error fetching user details.", Toast.LENGTH_SHORT).show();
                     }
                 }

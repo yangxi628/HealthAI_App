@@ -77,7 +77,6 @@ public class RegisterActivity extends AppCompatActivity {
         String profileImg = profileImgEditText.getText().toString();
 
         if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
-            // Show an error message when either email or password is empty
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -105,7 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveUserDetailsToFirestore(String uid, String firstname, String lastname, String email, String doctor, String profileImg) {
-        // Create a new document in the "users" collection
         User user = new User(firstname, lastname, email, doctor, profileImg, "patient");
 
         firestore.collection("users").document(uid)
@@ -114,13 +112,10 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // User details saved successfully
                             Toast.makeText(RegisterActivity.this, "Registration successful!",
                                     Toast.LENGTH_SHORT).show();
-                            // Redirect to another activity, e.g., HomeActivity
-                            // You can use an Intent for this.
+
                         } else {
-                            // User details save failed
                             Toast.makeText(RegisterActivity.this, "Failed to save user details.",
                                     Toast.LENGTH_SHORT).show();
                         }
