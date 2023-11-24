@@ -151,6 +151,26 @@
             android:padding="8dp"
             android:textColor="@color/black"
             android:textColorHighlight="@color/blue" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonPatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor"/>
+        </RadioGroup>
 
         <Button
             android:id="@+id/RegisterButton"
@@ -162,6 +182,7 @@
             android:backgroundTint="#3b82f6"
             android:textColor="@android:color/white"
             />
+
     </LinearLayout>
 </ScrollView>
 

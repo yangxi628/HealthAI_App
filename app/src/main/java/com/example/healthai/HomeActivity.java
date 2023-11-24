@@ -5,15 +5,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.healthai.Models.UserState;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -45,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         emailTextView.setText(currentUserEmail);
 
         String role =  userState.getRole(); // Get the UID of the currently signed-in user
-        if (role.toLowerCase() != "patient") {
+        if (!role.toLowerCase().equals("patient")) {
             appointmentButton.setEnabled(false);
             historyButton.setEnabled(false);
         }
