@@ -38,7 +38,6 @@ public class RatingActivity extends AppCompatActivity {
         Button profileButton = findViewById(R.id.profileButton);
         Button ratingButton = findViewById(R.id.buttonRating);
         ImageView backButton = findViewById(R.id.BackButton);
-
         SeekBar ratingSeekBar = findViewById(R.id.ratingSeekBar);
         TextView selectedRatingText = findViewById(R.id.selectedRatingText);
         EditText feedbackEditText = findViewById(R.id.feedbackEditText);
