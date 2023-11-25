@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,14 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HistoryActivity extends AppCompatActivity {
+import com.example.healthai.R;
+
+public class SubscriptionActivity extends AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history);
+        setContentView(R.layout.subscription);
         Button homeButton = findViewById(R.id.homeButton);
         Button aiChatButton = findViewById(R.id.aiChatButton);
         Button contactButton = findViewById(R.id.contactButton);
@@ -24,7 +26,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.homeButton) {
-                    switchToActivity(HomeActivity.class);
+                    switchToActivity(NavigationActivity.class);
                 } else if (v.getId() == R.id.aiChatButton) {
                     switchToActivity(AiChatActivity.class);
                 } else if (v.getId() == R.id.contactButton) {

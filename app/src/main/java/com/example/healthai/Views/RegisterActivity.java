@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Views;
 
 import android.util.Log;
 import android.widget.Button;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.healthai.Models.User;
+import com.example.healthai.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
     private EditText firstNameEditText;
-
     private EditText lastNameEditText;
     private EditText doctorEditText;
     private EditText profileImgEditText;
@@ -71,12 +71,12 @@ public class RegisterActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
-        String firstname = firstNameEditText.getText().toString();
-        String lastname = lastNameEditText.getText().toString();
+        String firstName = firstNameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
         String doctor = doctorEditText.getText().toString();
         String profileImg = profileImgEditText.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
             Toast.makeText(RegisterActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 String uid = mAuth.getCurrentUser().getUid();
-                                saveUserDetailsToFirestore(uid,firstname,lastname,email,doctor,profileImg);
+                                saveUserDetailsToFirestore(uid,firstName,lastName,email,doctor,profileImg);
                             } else {
                                 // Registration failed
                                 Toast.makeText(RegisterActivity.this, "Registration failed. Check your credentials.", Toast.LENGTH_SHORT).show();

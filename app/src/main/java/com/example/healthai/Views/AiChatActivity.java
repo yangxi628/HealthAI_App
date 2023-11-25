@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Views;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.healthai.Controllers.MessagesViewAdapter;
+import com.example.healthai.Models.ChatMessage;
+import com.example.healthai.R;
 
 import java.util.ArrayList;
 
@@ -43,7 +46,7 @@ public class AiChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.homeButton) {
-                    switchToActivity(HomeActivity.class);
+                    switchToActivity(NavigationActivity.class);
                 } else if (v.getId() == R.id.aiChatButton) {
                     switchToActivity(AiChatActivity.class);
                 } else if (v.getId() == R.id.contactButton) {

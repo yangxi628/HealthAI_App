@@ -35,8 +35,8 @@ public class UserState {
     public void setUserStateFromDocument(DocumentSnapshot document, String uid) {
         if (document.exists()) {
             this.userID = uid;
-            this.firstName = document.getString("firstname");
-            this.lastName = document.getString("lastname");
+            this.firstName = document.getString("firstName");
+            this.lastName = document.getString("lastName");
             this.doctor = document.getString("doctor");
             this.email = document.getString("email");
             this.profileImg = document.getString("profileImg");

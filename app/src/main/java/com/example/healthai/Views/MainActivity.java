@@ -1,4 +1,4 @@
-    package com.example.healthai;
+    package com.example.healthai.Views;
 
     import android.content.Intent;
     import android.os.Bundle;
@@ -11,6 +11,7 @@
     import androidx.appcompat.app.AppCompatActivity;
 
     import com.example.healthai.Models.UserState;
+    import com.example.healthai.R;
     import com.google.android.gms.tasks.OnCompleteListener;
     import com.google.android.gms.tasks.Task;
     import com.google.firebase.auth.AuthResult;
@@ -93,7 +94,7 @@
                         if (document.exists()) {
                             UserState userState = UserState.getInstance();
                             userState.setUserStateFromDocument(document, uid);
-                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

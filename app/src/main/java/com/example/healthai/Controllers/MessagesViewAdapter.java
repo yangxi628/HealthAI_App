@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Controllers;
 
 
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.healthai.Models.ChatMessage;
+import com.example.healthai.R;
 
 import java.util.ArrayList;
 import java.util.Objects;

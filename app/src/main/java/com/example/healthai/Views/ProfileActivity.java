@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.healthai.Models.UserState;
+import com.example.healthai.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.BackButton) {
-                    switchToActivity(HomeActivity.class);
+                    switchToActivity(NavigationActivity.class);
                 } else if (v.getId() == R.id.signoutButton) {
                     FirebaseAuth.getInstance().signOut();
                     switchToActivity(MainActivity.class);

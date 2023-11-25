@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Views;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.healthai.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -59,7 +60,7 @@ public class ContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.homeButton) {
-                    switchToActivity(HomeActivity.class);
+                    switchToActivity(NavigationActivity.class);
                 } else if (v.getId() == R.id.aiChatButton) {
                     switchToActivity(AiChatActivity.class);
                 } else if (v.getId() == R.id.contactButton) {

@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Models;
 
 public class ChatMessage {
 

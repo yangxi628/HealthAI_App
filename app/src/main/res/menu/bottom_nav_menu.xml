@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/aichat"
+        android:icon="@drawable/baseline_emergency_24"
+        android:title="AIChat" />
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/support"
+        android:icon="@drawable/baseline_contact_support_24"
+        android:title="Support" />
+
+</menu>
