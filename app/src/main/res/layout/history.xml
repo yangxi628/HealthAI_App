@@ -3,81 +3,174 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HealthAI"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/title"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/gpName"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Medical History"
-            android:textSize="24sp"
-            android:visibility="visible" />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <!-- bottom row -->
-
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Home" />
-
-        <Button
-            android:id="@+id/aiChatButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="AI Chat" />
-
-        <Button
-            android:id="@+id/contactButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Contact" />
-
-        <Button
-            android:id="@+id/profileButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Profile" />
-    </LinearLayout>
-        <Button
+    tools:context=".HistoryActivity">
+    <ImageView
         android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/back" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medical Form"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:padding="16dp" />
+            <!-- Blood Pressure -->
+            <EditText
+                android:id="@+id/editTextBP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Blood Pressure" />
+
+            <!-- Chest Pain Type -->
+            <EditText
+                android:id="@+id/editTextChestPainType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Chest Pain Type" />
+
+            <!-- Cholesterol -->
+            <EditText
+                android:id="@+id/editTextCholesterol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cholesterol" />
+
+            <!-- EKG Results -->
+            <EditText
+                android:id="@+id/editTextEKGResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="EKG Results" />
+
+            <!-- Exercise Angina -->
+            <EditText
+                android:id="@+id/editTextExerciseAngina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Exercise Angina" />
+
+            <!-- FBS Over 120 -->
+            <EditText
+                android:id="@+id/editTextFBSOver120"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="FBS Over 120" />
+
+            <!-- Max HR -->
+            <EditText
+                android:id="@+id/editTextMaxHR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Max HR" />
+
+            <!-- Number Of Vessels Fluro -->
+            <EditText
+                android:id="@+id/editTextNumberOfVesselsFluro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number Of Vessels Fluro" />
+
+            <!-- ST Depression -->
+            <EditText
+                android:id="@+id/editTextSTDepression"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ST Depression" />
+
+            <!-- Slope Of ST -->
+            <EditText
+                android:id="@+id/editTextSlopeOfST"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Slope Of ST" />
+
+            <!-- Thallium -->
+            <EditText
+                android:id="@+id/editTextThallium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Thallium" />
+
+            <!-- Age -->
+            <EditText
+                android:id="@+id/editTextAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age" />
+
+            <!-- Result -->
+            <EditText
+                android:id="@+id/editTextResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Result" />
+
+            <!-- Sex -->
+            <EditText
+                android:id="@+id/editTextSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sex" />
+
+            <!-- Type -->
+            <EditText
+                android:id="@+id/editTextType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type" />
+
+
+            <Button
+                android:id="@+id/buttonAddMedicalHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Medical History" />
+
+            <!-- Bottom row buttons -->
+            <LinearLayout
+                android:id="@+id/bottomButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/homeButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Home" />
+
+                <Button
+                    android:id="@+id/aiChatButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="AI Chat" />
+
+                <Button
+                    android:id="@+id/contactButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Contact" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

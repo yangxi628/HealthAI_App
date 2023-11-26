@@ -129,11 +129,5 @@ public class UserState {
         return timeslots;
     }
 
-    // Function to set or replace the current user's timeslot in Firebase
-    public void setUserTimeslotInFirebase(String doctorId, List<Users.Timeslot> newTimeslots) {
-        // You can use the same approach as in TimeslotUtils to update timeslots in Firestore
-        // Example: TimeslotUtils.updateTimeslotsInFirestore(doctorId, newTimeslots);
-        // Then, set the new timeslots in the UserState
-        this.timeslot = newTimeslots;
-    }
+
 }
