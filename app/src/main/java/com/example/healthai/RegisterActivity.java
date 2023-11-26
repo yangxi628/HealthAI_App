@@ -1,5 +1,6 @@
 package com.example.healthai;
 
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.Timestamp;
+import com.example.healthai.Models.UserState;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -103,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         int selectedId = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(selectedId);
-        String role = radioButton.getText().toString();
+        String role = radioButton.getText().toString().toLowerCase();
         String phone = null;
 
         if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
@@ -126,41 +128,15 @@ public class RegisterActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 String uid = mAuth.getCurrentUser().getUid();
                                 // Create an empty list for timeslots initially
-                                List<Users.Timeslot> timeslots = new ArrayList<>();
-                                for (int i = 0; i < 5; i++) {
-                                    // Get the current timestamp
-                                    Timestamp nextDayTimestamp = Timestamp.now();
-
-                                    // Convert Timestamp to Date
-                                    Date nextDayDate = nextDayTimestamp.toDate();
-
-                                    // Use Calendar to add a day to the date
-                                    Calendar calendar = Calendar.getInstance();
-                                    calendar.setTime(nextDayDate);
-                                    calendar.add(Calendar.DAY_OF_MONTH, i);
-
-                                    for (int j = 9; j <= 16; j++) {
-                                        // Set the current hour
-                                        calendar.set(Calendar.HOUR_OF_DAY, j);
-                                        calendar.set(Calendar.MINUTE, 0);
-                                        calendar.set(Calendar.SECOND, 0);
-
-                                        // Get the Date object representing the current time
-                                        Date currentTime = calendar.getTime();
-
-                                        // Create a new Timestamp object
-                                        Timestamp currentTimestamp = new Timestamp(currentTime);
-
-                                        // Format the date and time as needed
-                                        String formattedTime = currentTimestamp.toDate().toString(); // Modify the formatting as needed
-
-                                        // Create the Timeslot object
-                                        timeslots.add(new Users.Timeslot(null, "available", currentTimestamp));
-                                    }
+                                List<Users.Timeslot> timeslots = null;
+                                UserState userState = UserState.getInstance();
+                                if (role.equals("doctor")){
+                                    timeslots = userState.createnewTimeslot();
                                 }
-
-                                Users user = new Users(firstname, lastname, email, password, phone, role.toLowerCase(), timeslots);
+                                Users user = new Users(firstname, lastname, email, password, phone, role, timeslots);
                                 saveUserDetailsToFirestore(uid, user);
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
                             } else {
                                 // Registration failed
                                 Toast.makeText(RegisterActivity.this, "Registration failed. Check your credentials.", Toast.LENGTH_SHORT).show();
