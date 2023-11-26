@@ -57,6 +57,8 @@ public class RiskAssesmentAdapter extends RecyclerView.Adapter<RiskAssesmentAdap
                 Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     @Override

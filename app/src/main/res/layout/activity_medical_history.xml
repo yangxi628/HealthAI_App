@@ -8,15 +8,40 @@
     android:orientation="vertical"
     tools:context=".Views.MedicalHistoryActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/detailName"
-        android:layout_marginTop="14dp"
-        android:text="Heart Disease Risk Assesment"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical">
+
+
+        <ImageView
+            android:id="@+id/BackButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:padding="8dp"
+            android:src="@drawable/back" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailName"
+            android:text="Heart Disease Risk Assesment"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"/>
+
+    </LinearLayout>
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
         android:layout_height="200dp"
@@ -68,31 +93,20 @@
     </androidx.cardview.widget.CardView>
 
 
-    <!-- item_form.xml -->
-    <LinearLayout
+    <!-- activity_medical_history.xml -->
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        tools:context=".Views.MedicalHistoryActivity">
 
-        <TextView
-            android:id="@+id/labelTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Blood pressure"/>
-
-        <TextView
-            android:id="@+id/valueTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="120"/>
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" />
+    </RelativeLayout>
 
 
 </LinearLayout>
