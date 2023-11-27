@@ -16,6 +16,18 @@
         android:theme="@style/Theme.HealthAI"
         tools:targetApi="31">
         <activity
+            android:name=".Views.RunHeartRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunDiabetesRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunLungRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".Views.MedicalHistoryActivity"
             android:exported="false" />
         <activity

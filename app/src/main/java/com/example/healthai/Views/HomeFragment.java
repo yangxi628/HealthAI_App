@@ -48,7 +48,6 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -93,11 +92,9 @@ public class HomeFragment extends Fragment {
         String currentUserNameText = "Hello, " + userState.getFirstName();
         String currentUserEmail = userState.getEmail();
 
-        // Set the text for the TextViews
         usernameTextView.setText(currentUserNameText);
         emailTextView.setText(currentUserEmail);
 
-        // Assign click listener
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +163,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void getImages(){
-
         mImageUrls.add(String.valueOf(R.drawable.heart));
         mNames.add("Heart Disease");
         mImageUrls.add(String.valueOf(R.drawable.lung));

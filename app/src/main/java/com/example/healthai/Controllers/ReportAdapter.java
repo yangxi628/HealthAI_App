@@ -75,7 +75,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
         holder.listImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Assuming title is a property of AssessmentData class
                 String type = currentAssessment.getType();
                 switch (type) {
                     case "lung":

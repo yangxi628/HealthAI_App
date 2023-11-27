@@ -2,6 +2,7 @@ package com.example.healthai.Controllers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.healthai.R;
+import com.example.healthai.Views.RunDiabetesRiskAssessmentActivity;
+import com.example.healthai.Views.RunHeartRiskAssessmentActivity;
+import com.example.healthai.Views.RunLungRiskAssessmentActivity;
 
 import java.util.ArrayList;
 
@@ -37,7 +41,6 @@ public class RiskAssesmentAdapter extends RecyclerView.Adapter<RiskAssesmentAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        // Load the image directly from the resource name
         int resourceId = mContext.getResources().getIdentifier(
                 mImageUrls.get(position),
                 "drawable",
@@ -54,7 +57,24 @@ public class RiskAssesmentAdapter extends RecyclerView.Adapter<RiskAssesmentAdap
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
+                String itemName = mNames.get(position);
+                switch (itemName) {
+                    case "Heart Disease":
+                        Intent heart = new Intent(mContext, RunHeartRiskAssessmentActivity.class);
+                        mContext.startActivity(heart);
+                        break;
+                    case "Lung Cancer":
+                        Intent lung = new Intent(mContext, RunLungRiskAssessmentActivity.class);
+                        mContext.startActivity(lung);
+                        break;
+                    case "Diabetes":
+                        Intent diabetes = new Intent(mContext, RunDiabetesRiskAssessmentActivity.class);
+                        mContext.startActivity(diabetes);
+                        break;
+                    default:
+                        Toast.makeText(mContext, "Unknown activity: " + itemName, Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
 

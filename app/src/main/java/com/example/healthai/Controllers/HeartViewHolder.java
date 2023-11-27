@@ -25,6 +25,9 @@ public class HeartViewHolder extends GenericViewHolder<HeartAssessmentData>{
 
     public HeartViewHolder(@NonNull View itemView) {
         super(itemView);
+        labelAgeTextView = itemView.findViewById(R.id.labelAgeTextView);
+        valueAgeTextView = itemView.findViewById(R.id.valueAgeTextView);
+
         labelSexTextView = itemView.findViewById(R.id.labelSexTextView);
         valueSexTextView = itemView.findViewById(R.id.valueSexTextView);
 
