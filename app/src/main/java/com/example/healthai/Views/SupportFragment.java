@@ -1,6 +1,7 @@
 package com.example.healthai.Views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ public class SupportFragment extends Fragment {
     ImageView profileButton;
     Button scheduleButton;
     Button contactButton;
+    Button contactInsuranceButton;
     TextView usernameTextView;
     TextView emailTextView;
 
@@ -51,7 +53,7 @@ public class SupportFragment extends Fragment {
         profileButton = view.findViewById(R.id.profileButton);
          scheduleButton = view.findViewById(R.id.scheduleButton);
          contactButton = view.findViewById(R.id.contactButton);
-
+        contactInsuranceButton = view.findViewById(R.id.contactInsuranceButton);
         usernameTextView = view.findViewById(R.id.CurrentUserNameText);
         emailTextView = view.findViewById(R.id.currentUserEmail);
 
@@ -70,13 +72,21 @@ public class SupportFragment extends Fragment {
                     switchToActivity(AppointmentActivity.class);
                 }
                 else if (v.getId() == R.id.contactButton) {
-                    switchToActivity(ContactActivity.class);
+                    Intent insuranceIntent = new Intent(Intent.ACTION_DIAL);
+                    insuranceIntent.setData(Uri.parse("tel:0987654321"));
+                    startActivity(insuranceIntent);
+                }
+                else if (v.getId() == R.id.contactInsuranceButton) {
+                    Intent insuranceIntent = new Intent(Intent.ACTION_DIAL);
+                    insuranceIntent.setData(Uri.parse("tel:0987654321"));
+                    startActivity(insuranceIntent);
                 }
             }
         };
         profileButton.setOnClickListener(buttonClickListener);
         scheduleButton.setOnClickListener(buttonClickListener);
         contactButton.setOnClickListener(buttonClickListener);
+        contactInsuranceButton.setOnClickListener(buttonClickListener);
         return view;
     }
     private void switchToActivity(Class<?> cls) {
