@@ -1,5 +1,6 @@
 package com.example.healthai.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,25 +8,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.healthai.Models.UserState;
 import com.example.healthai.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AIChatFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AIChatFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    ImageView profileButton;
+    Button openChatbotButton;
+    TextView usernameTextView;
+    TextView emailTextView;
     public AIChatFragment() {
         // Required empty public constructor
     }
@@ -33,8 +27,6 @@ public class AIChatFragment extends Fragment {
     public static AIChatFragment newInstance(String param1, String param2) {
         AIChatFragment fragment = new AIChatFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,16 +34,40 @@ public class AIChatFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a_i_chat, container, false);
+        View view = inflater.inflate(R.layout.fragment_a_i_chat, container, false);
+        profileButton = view.findViewById(R.id.profileButton);
+        openChatbotButton = view.findViewById(R.id.openChatbotButton);
+
+        usernameTextView = view.findViewById(R.id.CurrentUserNameText);
+        emailTextView = view.findViewById(R.id.currentUserEmail);
+
+        UserState userState = UserState.getInstance();
+        String currentUserNameText = "Hello, " + userState.getFirstName();
+        String currentUserEmail = userState.getEmail();
+
+        usernameTextView.setText(currentUserNameText);
+        emailTextView.setText(currentUserEmail);
+        View.OnClickListener buttonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.profileButton) {
+                    switchToActivity(ProfileActivity.class);
+                } else if (v.getId() == R.id.openChatbotButton) {
+                    switchToActivity(AiChatActivity.class);
+                }
+            }
+        };
+        profileButton.setOnClickListener(buttonClickListener);
+        openChatbotButton.setOnClickListener(buttonClickListener);
+        return view;
+    }
+    private void switchToActivity(Class<?> cls) {
+        Intent intent = new Intent(getActivity(), cls);
+        startActivity(intent);
     }
 }

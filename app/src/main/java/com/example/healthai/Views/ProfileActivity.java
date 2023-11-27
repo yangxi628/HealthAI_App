@@ -21,7 +21,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.BackButton);
         Button signoutButton = findViewById(R.id.signoutButton);
-
+        Button ratingButton = findViewById(R.id.RateHealthAI);
+        Button subscriptionButton = findViewById(R.id.PaySubscription);
         // Access UserState in another part of the app
         UserState userState = UserState.getInstance();
         String currentUserNameText = userState.getFirstName() + " " + userState.getLastName();
@@ -44,12 +45,22 @@ public class ProfileActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     switchToActivity(MainActivity.class);
                 }
+                else if (v.getId() == R.id.RateHealthAI) {
+                    FirebaseAuth.getInstance().signOut();
+                    switchToActivity(RatingActivity.class);
+                }
+                else if (v.getId() == R.id.PaySubscription) {
+                    FirebaseAuth.getInstance().signOut();
+                    switchToActivity(SubscriptionActivity.class);
+                }
             }
         };
 
         // Set the click listeners for the buttons
         backButton.setOnClickListener(buttonClickListener);
         signoutButton.setOnClickListener(buttonClickListener);
+        subscriptionButton.setOnClickListener(buttonClickListener);
+        ratingButton.setOnClickListener(buttonClickListener);
     }
 
     private void switchToActivity(Class<?> cls) {
