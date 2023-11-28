@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,28 +15,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthAI"
         tools:targetApi="31">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".Views.RunHeartRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunDiabetesRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunLungRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.RunRiskAssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.MedicalHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".medicalHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.MainActivity"
             android:exported="true"> <!-- This is the launcher activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".RegisterActivity"/>
-
-        <activity android:name=".AiChatActivity" />
-        <activity android:name=".ContactActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SubscriptionActivity" />
-        <activity android:name=".AppointmentActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".RatingActivity" />
-        <activity android:name=".HomeActivity" />
-
-
-
-
+        <activity android:name=".Views.RegisterActivity" />
+        <activity android:name=".Views.AiChatActivity" />
+        <activity android:name=".Views.ContactActivity" />
+        <activity android:name=".Views.ProfileActivity" />
+        <activity android:name=".Views.SubscriptionActivity" />
+        <activity android:name=".Views.AppointmentActivity" />
+        <activity android:name=".Views.HistoryActivity" />
+        <activity android:name=".Views.RatingActivity" />
+        <activity android:name=".Views.NavigationActivity" />
     </application>
 
 </manifest>
