@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     if (document.exists()) {
                         UserState userState = UserState.getInstance();
                         userState.setUserStateFromDocument(document, uid);
-                        Intent intent = new Intent(MainActivity.this, HomeFragment.class);
+                        Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
