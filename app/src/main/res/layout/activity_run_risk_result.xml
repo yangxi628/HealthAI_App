@@ -1,0 +1,118 @@
+<!-- activity_run_lung_risk_result.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_shadow_background"
+            android:orientation="vertical"
+            android:padding="24dp">
+    <TextView
+        android:id="@+id/resultHeadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prediction Result"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/predictionResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:layout_below="@id/resultHeadingTextView"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/subtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Filled form and result have been saved to your medical history. Thank you."
+        android:textSize="16sp"
+        android:layout_below="@id/predictionResultTextView"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#666666"/>
+
+    <!-- Interpreting Results Section -->
+    <TextView
+        android:id="@+id/interpretingResultsHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interpreting Results"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/subtext"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Heart Disease Section -->
+    <TextView
+        android:id="@+id/heartDiseaseHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heart Disease"
+        android:textSize="18sp"
+        android:layout_below="@id/interpretingResultsHeading"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/heartDiseaseInterpretation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If result is 'Presence', you are at risk of heart disease. If it is 'Absence', then it is likely you are not at risk of heart disease."
+        android:layout_below="@id/heartDiseaseHeading"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Diabetes Section -->
+    <TextView
+        android:id="@+id/diabetesHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diabetes"
+        android:textSize="18sp"
+        android:layout_below="@id/heartDiseaseInterpretation"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/diabetesInterpretation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If result is '1', you are at risk of Diabetes. If it is '0', then it is likely you are not at risk of Diabetes."
+        android:layout_below="@id/diabetesHeading"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Lung Cancer Section -->
+    <TextView
+        android:id="@+id/lungCancerHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lung Cancer"
+        android:textSize="18sp"
+        android:layout_below="@id/diabetesInterpretation"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/lungCancerInterpretation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If result is '1', you are at risk of Lung Cancer. If it is '0', then it is likely you are not at risk of Lung Cancer."
+        android:layout_below="@id/lungCancerHeading"
+        android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

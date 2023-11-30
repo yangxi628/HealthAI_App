@@ -11,7 +11,6 @@ import java.util.List;
 public class UserState {
 
     private static UserState instance;
-
     private String userID;
     private String firstName;
     private String lastName;

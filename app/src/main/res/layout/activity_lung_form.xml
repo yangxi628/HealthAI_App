@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_shadow_background"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Run Lung cancer Risk Assessment"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/AgeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Age"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
+
+        <EditText
+            android:id="@+id/GenderEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Gender"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
+
+        <!-- Use Switch widgets for binary choices -->
+        <Switch
+            android:id="@+id/PatientSmokesSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient Smokes" />
+
+        <Switch
+            android:id="@+id/PatienthasYellowFingersSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Yellow Fingers" />
+
+        <Switch
+            android:id="@+id/PatienthasAnxietySwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Anxiety" />
+
+        <Switch
+            android:id="@+id/PatientExperiencesPeerPressureSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient experiences Peer Pressure" />
+
+        <Switch
+            android:id="@+id/PatienthasChronicDiseaseSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Chronic Disease" />
+
+        <Switch
+            android:id="@+id/PatientExperiencesFatigueSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient experiences Fatigue" />
+
+        <Switch
+            android:id="@+id/PatientHasAllergiesSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Allergies" />
+
+        <Switch
+            android:id="@+id/PatientExperiencesWheezingSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient experiences Wheezing" />
+
+        <Switch
+            android:id="@+id/PatientConsumesAlcoholSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient Consumes Alcohol" />
+
+        <Switch
+            android:id="@+id/PatienthasCoughingSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Coughing" />
+
+        <Switch
+            android:id="@+id/PatientExperiencesShortnessofBreathSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient experiences Shortness of Breath" />
+
+        <Switch
+            android:id="@+id/PatientHasSwallowingDifficultySwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient has Swallowing Difficulty" />
+
+        <Switch
+            android:id="@+id/PatientExperiencesChestPainSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Patient experiences Chest Pain" />
+
+        <Button
+            android:id="@+id/RunButton"
+            android:text="Run Assessment"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#3b82f6"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>

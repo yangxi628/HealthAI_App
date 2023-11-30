@@ -108,7 +108,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void EventChangeListener() {
+        UserState userState = UserState.getInstance();
+
         db.collection("reports")
+                .whereEqualTo("patient", userState.getUserID())
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

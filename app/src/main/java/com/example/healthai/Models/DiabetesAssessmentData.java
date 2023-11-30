@@ -64,4 +64,44 @@ public class DiabetesAssessmentData implements AssessmentData {
     public String getResult() {
         return result;
     }
+
+    public void setPregnancies(String pregnancies) {
+        Pregnancies = pregnancies;
+    }
+
+    public void setGlucose(String glucose) {
+        Glucose = glucose;
+    }
+
+    public void setBloodPressure(String bloodPressure) {
+        BloodPressure = bloodPressure;
+    }
+
+    public void setSkinThickness(String skinThickness) {
+        SkinThickness = skinThickness;
+    }
+
+    public void setInsulin(String insulin) {
+        Insulin = insulin;
+    }
+
+    public void setBMI(String BMI) {
+        this.BMI = BMI;
+    }
+
+    public void setDiabetesPedigreeFunction(String diabetesPedigreeFunction) {
+        DiabetesPedigreeFunction = diabetesPedigreeFunction;
+    }
+
+    public void setAge(String age) {
+        Age = age;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 }
