@@ -127,19 +127,6 @@
                 android:textColorHighlight="@color/blue" />
 
             <EditText
-                android:id="@+id/editTextDoctor"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/editTextDoctor"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="Doctor"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/blue" />
-
-            <EditText
                 android:id="@+id/editTextProfileImg"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -151,6 +138,7 @@
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/blue" />
+
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
@@ -171,6 +159,44 @@
                     android:layout_height="wrap_content"
                     android:text="Doctor"/>
             </RadioGroup>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doctor"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Insurance Provider"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerInsurance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/blue"/>
 
             <Button
                 android:id="@+id/RegisterButton"

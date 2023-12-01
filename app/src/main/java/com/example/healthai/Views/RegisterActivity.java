@@ -2,6 +2,8 @@ package com.example.healthai.Views;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.os.Bundle;
 import android.view.View;
@@ -9,18 +11,36 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.healthai.Controllers.DoctorAdapter;
+import com.example.healthai.Controllers.InsuranceAdapter;
+import com.example.healthai.Models.AssessmentData;
+import com.example.healthai.Models.Doctor;
+import com.example.healthai.Models.Insurance;
 import com.example.healthai.Models.Users;
 import com.example.healthai.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.Timestamp;
 import com.example.healthai.Models.UserState;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,13 +55,16 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
     private EditText firstNameEditText;
-
     private EditText lastNameEditText;
-    private EditText doctorEditText;
+    private Spinner spinnerDoctor;
+    private Spinner spinnerInsurance;
     private EditText profileImgEditText;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private RadioGroup radioGroup;
+    private String selectedDoctorId;
+    private String selectedInsuranceId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +83,101 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
-        doctorEditText = findViewById(R.id.editTextDoctor);
+        spinnerInsurance = findViewById(R.id.spinnerInsurance);
+
+
+        spinnerDoctor = findViewById(R.id.spinnerDoctor);
         profileImgEditText = findViewById(R.id.editTextProfileImg);
         radioGroup = findViewById(R.id.radioGroup);
+
+        List<Doctor> doctorList = new ArrayList<>();
+
+        firestore.collection("users")
+                .whereEqualTo("role", "doctor")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            // Handle errors if any
+                            return;
+                        }
+
+                        doctorList.clear(); // Clear the list before adding new data
+
+                        for (QueryDocumentSnapshot document : snapshot) {
+                            String documentId = document.getId();
+                            String doctorName = document.getString("firstName") + " " + document.getString("lastName");
+
+                            Doctor doctor = new Doctor(documentId, doctorName);
+                            doctorList.add(doctor);
+                        }
+
+                        // Set up the Spinner with the doctor names using the custom adapter
+                        Spinner spinnerDoctor = findViewById(R.id.spinnerDoctor);
+                        DoctorAdapter doctorAdapter = new DoctorAdapter(getApplicationContext(), doctorList);
+                        spinnerDoctor.setAdapter(doctorAdapter);
+                    }
+                });
+
+        spinnerDoctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                Doctor selectedDoctor = (Doctor) parentView.getItemAtPosition(position);
+
+                if (selectedDoctor != null) {
+                     selectedDoctorId = selectedDoctor.getDocumentId();
+
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Handle nothing selected if needed
+            }
+        });
+
+
+        List<Insurance> insuranceList = new ArrayList<>();
+
+        firestore.collection("insuranceCompanies")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            return;
+                        }
+
+                        insuranceList.clear();
+
+                        for (QueryDocumentSnapshot document : snapshot) {
+                            String documentId = document.getId();
+                            String insuranceName = document.getString("name");
+
+                            Insurance insurance = new Insurance(documentId, insuranceName);
+                            insuranceList.add(insurance);
+                        }
+
+                        InsuranceAdapter insuranceAdapter = new InsuranceAdapter(getApplicationContext(), insuranceList);
+                        spinnerInsurance.setAdapter(insuranceAdapter);
+                    }
+                });
+
+        spinnerInsurance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Retrieve the selected Doctor object from the adapter
+                Insurance selectedInsurance = (Insurance) parentView.getItemAtPosition(position);
+
+                if (selectedInsurance != null) {
+                    selectedInsuranceId = selectedInsurance.getDocumentId();
+
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Handle nothing selected if needed
+            }
+        });
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -72,10 +187,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Disable or enable the doctorEditText based on the selected radio button
                 if (radioButton.getText().toString().equals("Doctor")) {
-                    doctorEditText.setEnabled(false);
-                    doctorEditText.setBackgroundResource(R.drawable.disabled_edittext_background);
+                    spinnerDoctor.setEnabled(false);
+                    spinnerDoctor.setBackgroundResource(R.drawable.disabled_edittext_background);
                 } else {
-                    doctorEditText.setEnabled(true);
+                    spinnerDoctor.setEnabled(true);
                 }
             }
         });
@@ -101,7 +216,8 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPassword = confirmPasswordEditText.getText().toString();
         String firstname = firstNameEditText.getText().toString();
         String lastname = lastNameEditText.getText().toString();
-        String doctor = doctorEditText.getText().toString();
+        String doctor = selectedDoctorId;
+        String insurance = selectedInsuranceId;
         String profileImg = profileImgEditText.getText().toString();
         radioGroup = findViewById(R.id.radioGroup);
         int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -133,8 +249,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 UserState userState = UserState.getInstance();
                                 if (role.equals("doctor")){
                                     timeslots = userState.createnewTimeslot();
+
                                 }
-                                Users user = new Users(firstname, lastname, email, password, phone, role, timeslots);
+                                Users user = new Users(firstname, lastname, email, password, phone, role, timeslots, doctor,insurance);
                                 saveUserDetailsToFirestore(uid, user);
                                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                 startActivity(intent);

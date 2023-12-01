@@ -12,12 +12,15 @@ public class Users {
     private String password;
     private String phone;
     private List<Timeslot> timeslots;
+    private String doctor;
+
+    private String insurance;
 
     public Users() {
         // Default constructor required for Firebase
     }
 
-    public Users(String firstname, String lastname, String email, String password, String phone, String role, List<Timeslot> timeslots) {
+    public Users(String firstname, String lastname, String email, String password, String phone, String role, List<Timeslot> timeslots, String doctor,String insurance) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -25,6 +28,8 @@ public class Users {
         this.password = password;
         this.phone = phone;
         this.timeslots = timeslots;
+        this.doctor = doctor;
+        this.insurance = insurance;
     }
 
     public List<Timeslot> getTimeslots() {
@@ -117,5 +122,21 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
     }
 }

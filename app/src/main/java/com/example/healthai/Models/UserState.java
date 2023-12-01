@@ -19,7 +19,7 @@ public class UserState {
     private String profileImg;
     private String role;
     private List<Users.Timeslot> timeslot;  // Added timeslot attribute
-
+    private String insurance;
     private UserState() {
         // Private constructor to prevent instantiation outside of the class
         this.userID = "";
@@ -29,6 +29,7 @@ public class UserState {
         this.email = "";
         this.profileImg = "";
         this.role = "";
+        this.insurance = "";
         this.timeslot = null;  // Initializing timeslot to null
     }
 
@@ -48,6 +49,7 @@ public class UserState {
             this.email = document.getString("email");
             this.profileImg = document.getString("profileImg");
             this.role = document.getString("role");
+            this.insurance = document.getString("insurance");
 
             // Extract timeslots from document
             List<Users.Timeslot> timeslots = (List<Users.Timeslot>) document.get("timeslots");
@@ -82,6 +84,15 @@ public class UserState {
 
     public String getRole() {
         return role;
+    }
+
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
     }
 
     // Getter and setter for timeslot
