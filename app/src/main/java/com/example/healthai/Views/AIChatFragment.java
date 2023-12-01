@@ -21,6 +21,7 @@ import com.example.healthai.Controllers.MessageAdapter;
 import com.example.healthai.Models.Message;
 import com.example.healthai.Models.UserState;
 import com.example.healthai.R;
+import com.google.firebase.Timestamp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -128,7 +130,7 @@ public class AIChatFragment extends Fragment {
         requireActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                messageList.add(new Message(message, sentBy));
+                messageList.add(new Message(message, sentBy, new Timestamp(new Date())));
                 messageAdapter.notifyDataSetChanged();
                 recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
             }

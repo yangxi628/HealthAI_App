@@ -91,7 +91,7 @@ public class AppointmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.BackButton) {
-                    finish();
+                    switchToActivity(NavigationActivity.class);
                 }
                 else if (v.getId() == R.id.scheduleButton) {
                     String date = dateEditText.getText().toString();
@@ -100,9 +100,12 @@ public class AppointmentActivity extends AppCompatActivity {
                 }
             }
         };
-
         BackButton.setOnClickListener(buttonClickListener);
         scheduleButton.setOnClickListener(buttonClickListener);
+    }
+    private void switchToActivity(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
+        startActivity(intent);
     }
 
     private void fetchAndDisplayDoctorName() {

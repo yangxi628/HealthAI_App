@@ -36,7 +36,7 @@ public class SubscriptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
              if (v.getId() == R.id.contactButton) {
-                    switchToActivity(ContactActivity.class);
+                    switchToActivity(ProfileActivity.class);
                 } else if (v.getId() == R.id.profileButton) {
                     switchToActivity(ProfileActivity.class);
                 } else if (v.getId() == R.id.paymentButton) {

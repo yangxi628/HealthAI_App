@@ -29,19 +29,16 @@ public class SupportFragment extends Fragment {
     Button scheduleButton;
     Button contactButton;
     Button contactInsuranceButton;
+    Button chatButton;
     TextView usernameTextView;
     TextView emailTextView;
-
     ImageView doctorProfileImageView;
     TextView doctorNameTextView;
     TextView doctorEmailTextView;
-
     String doctorProfileImage;
     String doctorName;
     String doctorEmail;
     String doctorPhone;
-
-
     ImageView insuranceProfileImageView;
     TextView insuranceNameTextView;
     TextView insuranceEmailTextView;
@@ -73,6 +70,8 @@ public class SupportFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         View view = inflater.inflate(R.layout.fragment_support, container, false);
         profileButton = view.findViewById(R.id.profileButton);
+        chatButton = view.findViewById(R.id.chatButton);
+
         scheduleButton = view.findViewById(R.id.scheduleButton);contactButton = view.findViewById(R.id.contactButton);
         contactInsuranceButton = view.findViewById(R.id.contactInsuranceButton);
         usernameTextView = view.findViewById(R.id.CurrentUserNameText);
@@ -91,8 +90,6 @@ public class SupportFragment extends Fragment {
         String currentUserEmail = userState.getEmail();
         String userDoctorID = userState.getDoctor();
         String userInsuranceID = userState.getInsurance();
-
-
 
         usernameTextView.setText(currentUserNameText);
         emailTextView.setText(currentUserEmail);
@@ -142,7 +139,6 @@ public class SupportFragment extends Fragment {
                         }
 
                         if (document.exists()) {
-                            // The document exists, and you can access its data
                             insuranceName = document.getString("name");
                             insuranceProfileImage = document.getString("logoimg");
                             insuranceEmail = document.getString("email");
@@ -183,11 +179,16 @@ public class SupportFragment extends Fragment {
                     insuranceIntent.setData(Uri.parse("tel:" + insurancePhone));
                     startActivity(insuranceIntent);
                 }
+                else if (v.getId() == R.id.chatButton) {
+                    switchToActivity(DoctorChatActivity.class);
+
+                }
             }
         };
         profileButton.setOnClickListener(buttonClickListener);
         scheduleButton.setOnClickListener(buttonClickListener);
         contactButton.setOnClickListener(buttonClickListener);
+        chatButton.setOnClickListener(buttonClickListener);
         contactInsuranceButton.setOnClickListener(buttonClickListener);
         return view;
     }

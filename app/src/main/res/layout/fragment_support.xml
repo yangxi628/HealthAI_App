@@ -107,19 +107,29 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Contact Doctor"
+                        android:text="Ring Doctor"
                         app:cornerRadius="5dp"
-                        android:layout_marginEnd="8dp" />
+                        android:layout_marginEnd="2dp" />
+
+                    <Button
+                        android:id="@+id/chatButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Message Doctor"
+                        app:cornerRadius="5dp"
+                        android:layout_marginEnd="2dp"/>
 
                     <Button
                         android:id="@+id/scheduleButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Make Appointment"
+                        android:text="Schedule Doctor"
                         app:cornerRadius="5dp" />
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
