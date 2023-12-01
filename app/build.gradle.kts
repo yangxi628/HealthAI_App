@@ -44,6 +44,8 @@ dependencies {
     implementation ("com.google.firebase:firebase-firestore")
     implementation ("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-database")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
 
     implementation("com.android.volley:volley:1.2.0")
     implementation ("com.paypal.sdk:paypal-android-sdk:2.16.0")
