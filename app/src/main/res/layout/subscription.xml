@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/title"
@@ -13,9 +13,6 @@
         android:textSize="24sp"
         android:gravity="center"
         android:padding="16dp" />
-
-
-
 
     <ImageView
         android:id="@+id/BackButton"
@@ -31,7 +28,6 @@
         android:layout_marginEnd="371dp"
         android:layout_marginBottom="691dp"
         android:src="@drawable/back" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,8 +55,4 @@
         android:layout_alignParentBottom="true">
 
     </LinearLayout>
-
 </RelativeLayout>
-
-
-

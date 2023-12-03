@@ -18,20 +18,20 @@ public class User {
         this.role = role;
     }
 
-    public String getFirstName() {
+    public String getfirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstname) {
-        this.firstName = firstname;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getlastName() {
         return lastName;
     }
 
-    public void setLastName(String lastname) {
-        this.lastName = lastname;
+    public void setlastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

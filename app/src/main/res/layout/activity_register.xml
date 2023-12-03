@@ -139,26 +139,52 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/blue" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/editTextProfileImg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/editTextProfileImg"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:hint="Profile Image"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/blue" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonPatient"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:text="Patient"
+                android:checked="true"/>
 
-                <RadioButton
-                    android:id="@+id/radioButtonPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Patient"
-                    android:checked="true"/>
+            <RadioButton
+                android:id="@+id/radioButtonDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor"/>
+        </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/radioButtonDoctor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Doctor"/>
-            </RadioGroup>
+        <Button
+            android:id="@+id/RegisterButton"
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#3b82f6"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+</ScrollView>
 
 
 

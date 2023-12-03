@@ -46,6 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="16dp" />
 
+    <Button
+        android:id="@+id/scheduleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule Appointment"
+        android:layout_below="@id/timeEditText"
+        android:layout_marginTop="24dp"/>
 
 
 
