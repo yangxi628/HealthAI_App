@@ -20,14 +20,15 @@
         android:layout_marginTop="48dp"
         android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/dateEditText"
+    <Button
+        android:id="@+id/datePickerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date"
-        android:textSize="18sp"
         android:layout_below="@id/doctorNameText"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:hint="Select Date"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
 
         <TextView
@@ -49,14 +50,14 @@
 
 
 
-    <EditText
+    <Button
         android:id="@+id/timeEditText"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Time"
         android:textSize="18sp"
-        android:layout_below="@id/dateEditText"
+        android:layout_below="@id/datePickerButton"
         android:layout_marginTop="16dp"/>
 
     <Button

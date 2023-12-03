@@ -36,8 +36,8 @@ import java.util.Map;
 public class AppointmentActivity extends AppCompatActivity {
 
     private TextView doctorNameText;
-    private TextView dateEditText;
-    private TextView timeEditText;
+    private Button datePickerButton;
+    private Button timeEditText;
     private Button scheduleButton;
     private String doctorid;
     private ImageView BackButton;
@@ -50,7 +50,7 @@ public class AppointmentActivity extends AppCompatActivity {
 
         // Initialize UI elements
         doctorNameText = findViewById(R.id.doctorNameText);
-        dateEditText = findViewById(R.id.dateEditText);
+        datePickerButton = findViewById(R.id.datePickerButton);
         timeEditText = findViewById(R.id.timeEditText);
         scheduleButton = findViewById(R.id.scheduleButton);
         BackButton = findViewById(R.id.BackButton);
@@ -60,14 +60,14 @@ public class AppointmentActivity extends AppCompatActivity {
         ;       scheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String date = dateEditText.getText().toString();
+                String date = datePickerButton.getText().toString();
                 String time = timeEditText.getText().toString();
                 scheduleAppointment(date,time);
             }
         });
 
-        // Set up click listeners for dateEditText and timeEditText
-        dateEditText.setOnClickListener(new View.OnClickListener() {
+        // Set up click listeners for datePickerButton and timeEditText
+        datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
@@ -79,8 +79,8 @@ public class AppointmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Check if a date is selected before showing the time picker
-                if (!TextUtils.isEmpty(dateEditText.getText().toString())) {
-                    showAvailableTimeSlots(dateEditText.getText().toString());
+                if (!TextUtils.isEmpty(datePickerButton.getText().toString())) {
+                    showAvailableTimeSlots(datePickerButton.getText().toString());
                 } else {
                     Toast.makeText(AppointmentActivity.this, "Please select a date first", Toast.LENGTH_SHORT).show();
                 }
@@ -94,7 +94,7 @@ public class AppointmentActivity extends AppCompatActivity {
                     switchToActivity(NavigationActivity.class);
                 }
                 else if (v.getId() == R.id.scheduleButton) {
-                    String date = dateEditText.getText().toString();
+                    String date = datePickerButton.getText().toString();
                     String time = timeEditText.getText().toString();
                     scheduleAppointment(date,time);
                 }
@@ -149,9 +149,9 @@ public class AppointmentActivity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        // Format the selected date and set it to dateEditText
+                        // Format the selected date and set it to datePickerButton
                         String selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
-                        dateEditText.setText(selectedDate);
+                        datePickerButton.setText(selectedDate);
                     }
                 },
                 currentDate.get(Calendar.YEAR),
