@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.healthai.Controllers.ReportAdapter;
 import com.example.healthai.Controllers.RiskAssesmentAdapter;
@@ -33,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     ImageView profileButton;
@@ -179,7 +181,16 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RiskAssesmentAdapter adapter = new RiskAssesmentAdapter(getActivity(), mNames, mImageUrls);
-        recyclerView.setAdapter(adapter);
+
+        UserState userState = UserState.getInstance();
+        Toast.makeText(getActivity(), userState.getRole(), Toast.LENGTH_SHORT).show();
+
+
+
+        if (Objects.equals(userState.getRole(), "patient")) {
+            RiskAssesmentAdapter adapter = new RiskAssesmentAdapter(getActivity(), mNames, mImageUrls);
+            recyclerView.setAdapter(adapter);
+        }
+
     }
 }
