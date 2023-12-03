@@ -3,17 +3,15 @@ import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.text.SimpleDateFormat;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import com.google.firebase.Timestamp;
-
 public class TimeslotUtils {
-
     public static void cleanUpOutdatedAndExcessTimeslots(String doctorId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference usersCollection = db.collection("users");
@@ -57,6 +55,23 @@ public class TimeslotUtils {
             timeslots.add(newTimeslot);
         }
     }
+    private static List<Map<String, Object>> createTimeslotsForDay(Date date) {
+        List<Map<String, Object>> timeslotsForDay = new ArrayList<>();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, 9);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        for (int i = 0; i < 8; i++) { // 8 timeslots from 9 am to 4 pm
+            Map<String, Object> newTimeslot = createTimeslot(calendar.getTime());
+            timeslotsForDay.add(newTimeslot);
+            calendar.add(Calendar.HOUR, 1); // Move to the next hour
+        }
+
+        return timeslotsForDay;
+    }
 
     private static Map<String, Object> createTimeslot(Date date) {
         // Create a new timeslot map with default values
@@ -66,6 +81,8 @@ public class TimeslotUtils {
         newTimeslot.put("userId", null);
         return newTimeslot;
     }
+
+
 
     private static void updateTimeslotsInFirestore(String doctorId, List<Map<String, Object>> timeslots) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -82,4 +99,3 @@ public class TimeslotUtils {
                 });
     }
 }
-

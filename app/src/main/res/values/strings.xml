@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HealthAI</string>
+    <string name="app_name" translatable="false">HealthAI</string>
 
     <string-array name="role_select">
         <item>Select Role</item>
