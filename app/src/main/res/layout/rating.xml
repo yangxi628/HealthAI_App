@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/title"
@@ -76,38 +75,10 @@
         android:layout_marginEnd="371dp"
         android:layout_marginBottom="691dp"
         android:src="@drawable/back" />
+    
 
-    <EditText
-        android:id="@+id/feedbackEditText"
-        android:layout_width="match_parent"
-        android:layout_height="227dp"
-        android:layout_below="@+id/ratingSeekBar"
-        android:layout_marginTop="20dp"
-        android:hint="Enter your feedback" />
 
-    <Button
-        android:id="@+id/buttonRating"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:text="Rating"
-        android:layout_below="@+id/feedbackEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
 
-    <ImageView
-        android:id="@+id/BackButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="371dp"
-        android:layout_marginBottom="691dp"
-        android:src="@drawable/back" />
 
     <LinearLayout
         android:layout_width="match_parent"
