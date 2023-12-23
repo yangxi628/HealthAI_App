@@ -1,10 +1,11 @@
-package com.example.healthai.Models;
+package com.example.healthai.Models.Assessment;
+
+import com.example.healthai.Models.Assessment.AssessmentData;
 
 public class LungAssessmentData implements AssessmentData {
     String GENDER, AGE, SMOKING,YELLOW_FINGERS,ANXIETY,PEER_PRESSURE,CHRONIC_DISEASE,FATIGUE,ALLERGY,WHEEZING,ALCOHOL_CONSUMING,COUGHING,SHORTNESS_OF_BREATH,SWALLOWING_DIFFICULTY,CHEST_PAIN,date,result;
 
-    public LungAssessmentData() {
-    }
+    public LungAssessmentData() {}
     public LungAssessmentData(String GENDER, String AGE, String SMOKING, String YELLOW_FINGERS, String ANXIETY, String PEER_PRESSURE, String CHRONIC_DISEASE, String FATIGUE, String ALLERGY, String WHEEZING, String ALCOHOL_CONSUMING, String COUGHING, String SHORTNESS_OF_BREATH, String SWALLOWING_DIFFICULTY, String CHEST_PAIN,String date,String result)
     {
         this.GENDER = GENDER;
@@ -99,71 +100,4 @@ public class LungAssessmentData implements AssessmentData {
         return result;
     }
 
-    public void setGENDER(String GENDER) {
-        this.GENDER = GENDER;
-    }
-
-    public void setAGE(String AGE) {
-        this.AGE = AGE;
-    }
-
-    public void setSMOKING(String SMOKING) {
-        this.SMOKING = SMOKING;
-    }
-
-    public void setYELLOW_FINGERS(String YELLOW_FINGERS) {
-        this.YELLOW_FINGERS = YELLOW_FINGERS;
-    }
-
-    public void setANXIETY(String ANXIETY) {
-        this.ANXIETY = ANXIETY;
-    }
-
-    public void setPEER_PRESSURE(String PEER_PRESSURE) {
-        this.PEER_PRESSURE = PEER_PRESSURE;
-    }
-
-    public void setCHRONIC_DISEASE(String CHRONIC_DISEASE) {
-        this.CHRONIC_DISEASE = CHRONIC_DISEASE;
-    }
-
-    public void setFATIGUE(String FATIGUE) {
-        this.FATIGUE = FATIGUE;
-    }
-
-    public void setALLERGY(String ALLERGY) {
-        this.ALLERGY = ALLERGY;
-    }
-
-    public void setWHEEZING(String WHEEZING) {
-        this.WHEEZING = WHEEZING;
-    }
-
-    public void setALCOHOL_CONSUMING(String ALCOHOL_CONSUMING) {
-        this.ALCOHOL_CONSUMING = ALCOHOL_CONSUMING;
-    }
-
-    public void setCOUGHING(String COUGHING) {
-        this.COUGHING = COUGHING;
-    }
-
-    public void setSHORTNESS_OF_BREATH(String SHORTNESS_OF_BREATH) {
-        this.SHORTNESS_OF_BREATH = SHORTNESS_OF_BREATH;
-    }
-
-    public void setSWALLOWING_DIFFICULTY(String SWALLOWING_DIFFICULTY) {
-        this.SWALLOWING_DIFFICULTY = SWALLOWING_DIFFICULTY;
-    }
-
-    public void setCHEST_PAIN(String CHEST_PAIN) {
-        this.CHEST_PAIN = CHEST_PAIN;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
 }

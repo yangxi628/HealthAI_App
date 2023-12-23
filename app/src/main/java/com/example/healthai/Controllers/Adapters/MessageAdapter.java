@@ -1,4 +1,4 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;

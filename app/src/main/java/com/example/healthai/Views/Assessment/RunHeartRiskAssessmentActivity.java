@@ -1,4 +1,4 @@
-package com.example.healthai.Views;
+package com.example.healthai.Views.Assessment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.healthai.Models.UserState;
 import com.example.healthai.R;
+import com.example.healthai.Views.NavigationBar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
@@ -81,7 +82,7 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.BackButton) {
-                    switchToActivity(NavigationActivity.class);
+                    switchToActivity(NavigationBar.class);
                 } else if (v.getId() == R.id.RunButton) {
                     RunButton();
                 }
@@ -188,10 +189,6 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
                 jsonRequest.put("NumberOfVesselsFluro",NumberOfVesselsFluro);
                 jsonRequest.put("Thallium", Thallium);
 
-
-                // Log the JSON data being sent
-                Log.d("SendReportRequestTask", "JSON Request: " + jsonRequest.toString());
-
                 // Write the JSON object to the output stream
                 urlConnection.getOutputStream().write(jsonRequest.toString().getBytes("UTF-8"));
 
@@ -207,7 +204,6 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
                     reader.close();
                     return response.toString();
                 } else {
-                    // Handle error response
                     Log.e("HTTP Error", "HTTP error code: " + responseCode);
                     return null;
                 }
@@ -220,13 +216,10 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            // Handle the result as needed
             if (result != null) {
                 try {
                     JSONObject jsonResponse = new JSONObject(result);
                     String predictionResult = jsonResponse.getString("result");
-
-                    Log.d("Success", "Prediction Result is: " + predictionResult);
                     showResultView();
 
                     TextView predictionResultTextView = resultView.findViewById(R.id.predictionResultTextView);
@@ -235,13 +228,11 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
                     saveToFirebase(predictionResult, age, gender, ChestPainType, BP,
                             Cholesterol, FBSOver120, EKGResults, MaxHR, ExerciseAngina,STdepression,SlopeOfST,NumberOfVesselsFluro,Thallium,mContext);
 
-                    // Update UI or perform other actions with the prediction result
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             } else {
-                // Handle the case where the result is null (error occurred)
                 Log.e("HTTP Request Error", "Error occurred during HTTP request");
             }
         }
@@ -255,11 +246,8 @@ public class RunHeartRiskAssessmentActivity extends AppCompatActivity {
         if (userState != null) {
             String userID = userState.getUserID();
             Log.d("UserID", "User ID: " + userID);
-
-            // Rest of your code...
         } else {
             Log.e("UserID", "UserState is null");
-            // Handle the case where userState is null
         }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

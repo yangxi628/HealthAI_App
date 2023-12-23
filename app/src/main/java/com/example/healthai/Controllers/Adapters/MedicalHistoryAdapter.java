@@ -1,4 +1,4 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.healthai.Models.AssessmentData;
-import com.example.healthai.Models.DiabetesAssessmentData;
-import com.example.healthai.Models.HeartAssessmentData;
-import com.example.healthai.Models.LungAssessmentData;
+import com.example.healthai.Controllers.Holders.DiabetesViewHolder;
+import com.example.healthai.Controllers.Holders.GenericViewHolder;
+import com.example.healthai.Controllers.Holders.HeartViewHolder;
+import com.example.healthai.Controllers.Holders.LungViewHolder;
+import com.example.healthai.Models.Assessment.AssessmentData;
+import com.example.healthai.Models.Assessment.DiabetesAssessmentData;
+import com.example.healthai.Models.Assessment.HeartAssessmentData;
+import com.example.healthai.Models.Assessment.LungAssessmentData;
 import com.example.healthai.R;
 
 import java.util.List;

@@ -21,24 +21,11 @@ public class Message {
     public String getMessage() {
         return message;
     }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getSentBy() {
         return sentBy;
     }
-
-    public void setSentBy(String sentBy) {
-        this.sentBy = sentBy;
-    }
-
     public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Timestamp created) {
-        this.created = created;
-    }
 }

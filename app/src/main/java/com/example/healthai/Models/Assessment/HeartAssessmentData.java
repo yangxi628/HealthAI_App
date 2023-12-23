@@ -1,4 +1,6 @@
-package com.example.healthai.Models;
+package com.example.healthai.Models.Assessment;
+
+import com.example.healthai.Models.Assessment.AssessmentData;
 
 public class HeartAssessmentData implements AssessmentData {
     String age, sex, ChestPainType,BP,Cholesterol,FBSOver120,EKGResults,MaxHR,ExerciseAngina,STdepression,SlopeOfST,NumberOfVesselsFluro,Thallium,date,result;

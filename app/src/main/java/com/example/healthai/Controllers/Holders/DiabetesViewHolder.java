@@ -1,14 +1,14 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Holders;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.healthai.Models.DiabetesAssessmentData;
+import com.example.healthai.Models.Assessment.DiabetesAssessmentData;
 import com.example.healthai.R;
 
-public class DiabetesViewHolder extends GenericViewHolder<DiabetesAssessmentData>{
+public class DiabetesViewHolder extends GenericViewHolder<DiabetesAssessmentData> {
 
     TextView labelPregnanciesTextView, valuePregnanciesTextView,
             labelGlucoseTextView, valueGlucoseTextView,

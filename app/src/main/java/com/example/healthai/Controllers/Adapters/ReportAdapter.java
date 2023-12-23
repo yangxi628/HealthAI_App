@@ -1,4 +1,4 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,14 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.healthai.Models.AssessmentData;
-import com.example.healthai.Models.DiabetesAssessmentData;
-import com.example.healthai.Models.HeartAssessmentData;
-import com.example.healthai.Models.LungAssessmentData;
+import com.example.healthai.Models.Assessment.AssessmentData;
+import com.example.healthai.Models.Assessment.DiabetesAssessmentData;
+import com.example.healthai.Models.Assessment.HeartAssessmentData;
+import com.example.healthai.Models.Assessment.LungAssessmentData;
 import com.example.healthai.R;
 import com.example.healthai.Views.MedicalHistoryActivity;
 import com.google.android.material.imageview.ShapeableImageView;

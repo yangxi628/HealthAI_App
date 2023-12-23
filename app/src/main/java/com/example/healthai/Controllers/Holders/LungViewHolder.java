@@ -1,11 +1,11 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Holders;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.healthai.Models.LungAssessmentData;
+import com.example.healthai.Models.Assessment.LungAssessmentData;
 import com.example.healthai.R;
 
 public class LungViewHolder extends GenericViewHolder<LungAssessmentData> {

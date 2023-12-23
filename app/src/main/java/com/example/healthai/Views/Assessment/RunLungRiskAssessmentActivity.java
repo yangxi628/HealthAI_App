@@ -1,4 +1,4 @@
-package com.example.healthai.Views;
+package com.example.healthai.Views.Assessment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthai.Models.UserState;
 import com.example.healthai.R;
+import com.example.healthai.Views.NavigationBar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
@@ -114,7 +115,7 @@ public class RunLungRiskAssessmentActivity extends AppCompatActivity {
 
         View.OnClickListener buttonClickListener = v -> {
             if (v.getId() == R.id.BackButton) {
-                switchToActivity(NavigationActivity.class);
+                switchToActivity(NavigationBar.class);
             }
         };
 
@@ -223,9 +224,6 @@ public class RunLungRiskAssessmentActivity extends AppCompatActivity {
                 jsonRequest.put("CHEST_PAIN", Integer.parseInt(patientExperiencesChestPain));
 
 
-                // Log the JSON data being sent
-                Log.d("SendReportRequestTask", "JSON Request: " + jsonRequest.toString());
-
                 // Write the JSON object to the output stream
                 urlConnection.getOutputStream().write(jsonRequest.toString().getBytes("UTF-8"));
 
@@ -241,7 +239,6 @@ public class RunLungRiskAssessmentActivity extends AppCompatActivity {
                     reader.close();
                     return response.toString();
                 } else {
-                    // Handle error response
                     Log.e("HTTP Error", "HTTP error code: " + responseCode);
                     return null;
                 }
@@ -254,7 +251,6 @@ public class RunLungRiskAssessmentActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            // Handle the result as needed
             if (result != null) {
                 try {
                     JSONObject jsonResponse = new JSONObject(result);
@@ -269,14 +265,11 @@ public class RunLungRiskAssessmentActivity extends AppCompatActivity {
                     saveToFirebase(predictionResult,age,gender,patientSmokes,patientHasYellowFingers,patientHasAnxiety,patientExperiencesPeerPressure,  patientHasChronicDisease,patientExperiencesFatigue, patientHasAllergies, patientExperiencesWheezing,
                             patientConsumesAlcohol,patientHasCoughing, patientExperiencesShortnessOfBreath, patientHasSwallowingDifficulty, patientExperiencesChestPain,mContext);
 
-
-                        // Update UI or perform other actions with the prediction result
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
         } else {
-                // Handle the case where the result is null (error occurred)
                 Log.e("HTTP Request Error", "Error occurred during HTTP request");
             }
         }

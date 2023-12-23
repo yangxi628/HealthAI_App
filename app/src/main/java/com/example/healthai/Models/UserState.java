@@ -18,10 +18,9 @@ public class UserState {
     private String email;
     private String profileImg;
     private String role;
-    private List<Users.Timeslot> timeslot;  // Added timeslot attribute
+    private List<Users.Timeslot> timeslot;
     private String insurance;
     private UserState() {
-        // Private constructor to prevent instantiation outside of the class
         this.userID = "";
         this.firstName = "";
         this.lastName = "";
@@ -51,13 +50,11 @@ public class UserState {
             this.role = document.getString("role");
             this.insurance = document.getString("insurance");
 
-            // Extract timeslots from document
             List<Users.Timeslot> timeslots = (List<Users.Timeslot>) document.get("timeslots");
             this.timeslot = timeslots;
         }
     }
 
-    // Getter methods for each field
     public String getUserID() {
         return userID;
     }
@@ -89,19 +86,6 @@ public class UserState {
 
     public String getInsurance() {
         return insurance;
-    }
-
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
-
-    // Getter and setter for timeslot
-    public List<Users.Timeslot> getTimeslot() {
-        return timeslot;
-    }
-
-    public void setTimeslot(List<Users.Timeslot> timeslot) {
-        this.timeslot = timeslot;
     }
 
     // Function to get the current user's timeslot from Firebase

@@ -15,12 +15,4 @@ public class Insurance {
     public String getDocumentId() {
         return documentId;
     }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
-    }
-
-    public void setInsuranceName(String insuranceName) {
-        this.insuranceName = insuranceName;
-    }
 }

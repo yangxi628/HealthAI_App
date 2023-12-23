@@ -28,7 +28,7 @@ public class SubscriptionActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SubscriptionActivity.this, NavigationActivity.class);
+                Intent intent = new Intent(SubscriptionActivity.this, NavigationBar.class);
                 startActivity(intent);
             }
         });
@@ -67,13 +67,11 @@ public class SubscriptionActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                // Payment successful, extract details from the Intent
+                // Payment successful
                 PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                 if (confirmation != null) {
                     String paymentDetails = confirmation.toJSONObject().toString();
-                    // Handle the payment details
-
-                    // For simplicity, show a toast indicating success
+                    // show a toast indicating success
                     Toast.makeText(this, "Payment successful. Premium features unlocked!", Toast.LENGTH_SHORT).show();
                 }
             } else if (resultCode == RESULT_CANCELED) {

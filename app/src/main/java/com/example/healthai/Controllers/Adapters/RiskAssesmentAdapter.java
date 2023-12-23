@@ -1,4 +1,4 @@
-package com.example.healthai.Controllers;
+package com.example.healthai.Controllers.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.healthai.R;
-import com.example.healthai.Views.RunDiabetesRiskAssessmentActivity;
-import com.example.healthai.Views.RunHeartRiskAssessmentActivity;
-import com.example.healthai.Views.RunLungRiskAssessmentActivity;
+import com.example.healthai.Views.Assessment.RunDiabetesRiskAssessmentActivity;
+import com.example.healthai.Views.Assessment.RunHeartRiskAssessmentActivity;
+import com.example.healthai.Views.Assessment.RunLungRiskAssessmentActivity;
 
 import java.util.ArrayList;
 
@@ -77,8 +77,6 @@ public class RiskAssesmentAdapter extends RecyclerView.Adapter<RiskAssesmentAdap
                 }
             }
         });
-
-
     }
 
     @Override

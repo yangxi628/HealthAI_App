@@ -12,17 +12,8 @@ public class Doctor {
     public String getDoctorName() {
         return doctorName;
     }
-// Constructors, getters, and setters
 
     public String getDocumentId() {
         return documentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
-    }
-
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
     }
 }

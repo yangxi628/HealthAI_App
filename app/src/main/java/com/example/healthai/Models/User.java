@@ -18,30 +18,6 @@ public class User {
         this.role = role;
     }
 
-    public String getfirstName() {
-        return firstName;
-    }
-
-    public void setfirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getlastName() {
-        return lastName;
-    }
-
-    public void setlastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getDoctor() {
         return doctor;
     }
@@ -50,19 +26,4 @@ public class User {
         this.doctor = doctor;
     }
 
-    public String getProfileImg() {
-        return profileImg;
-    }
-
-    public void setProfileImg(String profileImg) {
-        this.profileImg = profileImg;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

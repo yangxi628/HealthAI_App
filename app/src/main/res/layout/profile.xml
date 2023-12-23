@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f3f4f6"
-    tools:context=".Views.MainActivity">
+    tools:context=".Views.LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearProfile"

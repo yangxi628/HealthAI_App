@@ -1,4 +1,4 @@
-package com.example.healthai.Models;
+package com.example.healthai.Models.Assessment;
 
 public interface AssessmentData {
     String getType();

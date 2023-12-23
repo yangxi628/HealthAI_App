@@ -42,7 +42,7 @@ public class RatingActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RatingActivity.this, NavigationActivity.class);
+                Intent intent = new Intent(RatingActivity.this, NavigationBar.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,6 @@ public class RatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.buttonRating) {
-                    // Assuming you have the rating obtained from the SeekBar
                     int rating = ratingSeekBar.getProgress() + 1;
 
                     // Get the feedback message from the EditText
@@ -62,8 +61,6 @@ public class RatingActivity extends AppCompatActivity {
             }
         };
 
-        // Assign the common click listener to all buttons
-
         ratingButton.setOnClickListener(buttonClickListener);
 
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -74,20 +71,11 @@ public class RatingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // Not needed for this example
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // Not needed for this example
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-    }
-
-    private void switchToActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
     }
 
     private void storeFeedback(int rating, String message) {

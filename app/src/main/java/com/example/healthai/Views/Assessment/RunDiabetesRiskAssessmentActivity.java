@@ -1,4 +1,4 @@
-package com.example.healthai.Views;
+package com.example.healthai.Views.Assessment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,13 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.healthai.Models.DiabetesAssessmentData;
 import com.example.healthai.Models.UserState;
 import com.example.healthai.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.example.healthai.Views.NavigationBar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
@@ -81,7 +77,7 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v.getId() == R.id.BackButton) {
-                    switchToActivity(NavigationActivity.class);
+                    switchToActivity(NavigationBar.class);
                 } else if (v.getId() == R.id.RunButton) {
                     RunButton();
                 }
@@ -113,7 +109,6 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
         String BMI = BMIEditText.getText().toString();
         String DiabetesPedigreeFunction = DiabetesPedigreeFunctionEditText.getText().toString();
 
-        // Create an instance of the AsyncTask and execute it
         new SendReportRequestTaskDiabetes(RunDiabetesRiskAssessmentActivity.this).execute(Pregnancies, Glucose, BloodPressure,
                 SkinThickness, Insulin, BMI, DiabetesPedigreeFunction,age);
     }
@@ -168,9 +163,6 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
                 jsonRequest.put("DiabetesPedigreeFunction", DiabetesPedigreeFunction);
                 jsonRequest.put("Age",Age);
 
-                // Log the JSON data being sent
-                Log.d("SendReportRequestTask", "JSON Request: " + jsonRequest.toString());
-
                 // Write the JSON object to the output stream
                 urlConnection.getOutputStream().write(jsonRequest.toString().getBytes("UTF-8"));
 
@@ -186,7 +178,6 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
                     reader.close();
                     return response.toString();
                 } else {
-                    // Handle error response
                     Log.e("HTTP Error", "HTTP error code: " + responseCode);
                     return null;
                 }
@@ -199,7 +190,6 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            // Handle the result as needed
             if (result != null) {
                 try {
                     JSONObject jsonResponse = new JSONObject(result);
@@ -214,12 +204,10 @@ public class RunDiabetesRiskAssessmentActivity extends AppCompatActivity {
                     saveToFirebase(predictionResult, Age, Pregnancies, Glucose, BloodPressure,
                             SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, mContext);
 
-                    // Update UI or perform other actions with the prediction result
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
-                // Handle the case where the result is null (error occurred)
                 Log.e("HTTP Request Error", "Error occurred during HTTP request");
             }
         }
